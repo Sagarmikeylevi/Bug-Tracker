@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "bug-tracker",
+  "version": "1.0.0",
+  "description": "This is a bug tracker website",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sagar Das",
+  "license": "ISC"
+}
