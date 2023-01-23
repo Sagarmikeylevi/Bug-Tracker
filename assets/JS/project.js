@@ -1,0 +1,148 @@
+/* make filter button open and close */
+let filter_button = document.querySelector('.filter-issues');
+let filter_form = document.querySelector('.create-filter-form');
+let issue_type = document.querySelector('.issue-type');
+filter_button.addEventListener('click' , ()=>{
+    filter_form.style.display = 'block';
+    issue_type.style.opacity = '0.2';
+});
+
+let filter_formClose = document.querySelector('.create-filter-form-head-focus-delete');
+filter_formClose.addEventListener('click' , ()=>{
+    filter_form.style.display = 'none';
+    issue_type.style.opacity = '1';
+})
+/* make filter button open and close end */
+/* labels */
+/* bug */
+let bug_checkBox = document.querySelector('.create-filter-form-labels-types-bugs-check-box');
+let bug_check = document.querySelector('#bugs_check');
+let bug_isClick = false;
+
+bug_checkBox.addEventListener('click' , ()=>{
+    if(bug_isClick == false){
+        bug_checkBox.style.background = '#008000';
+        bug_checkBox.style.border = 'none';
+        bug_check.style.display = 'block';
+        bug_isClick = true;
+    }
+    else{
+        bug_checkBox.style.background = 'transparent';
+        bug_checkBox.style.border = '1.5px solid #00001a';
+        bug_check.style.display = 'none';
+        bug_isClick = false;
+    }
+});
+/* bug end */
+/* UI DESIGN */
+let UI_checkBox = document.querySelector('.create-filter-form-labels-types-ui-design-check-box');
+let UI_check = document.querySelector('#ui_check');
+let UI_isClick = false;
+
+UI_checkBox.addEventListener('click' , ()=>{
+    if(UI_isClick == false){
+        UI_checkBox.style.background = '#008000';
+        UI_checkBox.style.border = 'none';
+        UI_check.style.display = 'block';
+        UI_isClick = true;
+    }
+    else{
+        UI_checkBox.style.background = 'transparent';
+        UI_checkBox.style.border = '1.5px solid #00001a';
+        UI_check.style.display = 'none';
+        UI_isClick = false;
+    }
+});
+/* UI DESIGN end*/
+/* documentation */
+let doc_checkBox = document.querySelector('.create-filter-form-labels-types-documentation-check-box');
+let doc_check = document.querySelector('#doc_check');
+let doc_isClick = false;
+
+doc_checkBox.addEventListener('click' , ()=>{
+    if(doc_isClick == false){
+        doc_checkBox.style.background = '#008000';
+        doc_checkBox.style.border = 'none';
+        doc_check.style.display = 'block';
+        doc_isClick = true;
+    }
+    else{
+        doc_checkBox.style.background = 'transparent';
+        doc_checkBox.style.border = '1.5px solid #00001a';
+        doc_check.style.display = 'none';
+        doc_isClick = false;
+    }
+});
+/* documentation end */
+
+/* enhancement */
+let enhancement_checkBox = document.querySelector('.create-filter-form-labels-types-enhancement-check-box');
+let enhancement_check = document.querySelector('#enhancement_check');
+let enhancement_isClick = false;
+
+enhancement_checkBox.addEventListener('click' , ()=>{
+    if(enhancement_isClick == false){
+        enhancement_checkBox.style.background = '#008000';
+        enhancement_checkBox.style.border = 'none';
+        enhancement_check.style.display = 'block';
+        enhancement_isClick = true;
+    }
+    else{
+        enhancement_checkBox.style.background = 'transparent';
+        enhancement_checkBox.style.border = '1.5px solid #00001a';
+        enhancement_check.style.display = 'none';
+        enhancement_isClick = false;
+    }
+});
+/* enhancement end*/
+/* duplicate */
+let duplicate_checkBox = document.querySelector('.create-filter-form-labels-types-duplicate-check-box');
+let duplicate_check = document.querySelector('#duplicate_check');
+let duplicate_isClick = false;
+
+duplicate_checkBox.addEventListener('click' , ()=>{
+    if(duplicate_isClick == false){
+        duplicate_checkBox.style.background = '#008000';
+        duplicate_checkBox.style.border = 'none';
+        duplicate_check.style.display = 'block';
+        duplicate_isClick = true;
+    }
+    else{
+        duplicate_checkBox.style.background = 'transparent';
+        duplicate_checkBox.style.border = '1.5px solid #00001a';
+        duplicate_check.style.display = 'none';
+        duplicate_isClick = false;
+    }
+});
+/* duplicate */
+/* labels end */
+/* Author */
+let none_checkBox = document.querySelector('.create-filter-form-author-none-check-box');
+let none_isClick = false;
+none_checkBox.addEventListener('click' , ()=>{
+    if(none_isClick == false){
+        none_checkBox.style.background = '#008000';
+        none_checkBox.style.border = 'none';
+        none_isClick = true;
+    }
+    else{
+        none_checkBox.style.background = 'transparent';
+        none_checkBox.style.border = ' 1.5px solid #00001a';
+        none_isClick = false;
+    }
+});
+let austin_checkBox = document.querySelector('.create-filter-form-author-Austin-Blake-check-box');
+let austin_isClick = false;
+austin_checkBox.addEventListener('click' , ()=>{
+    if(austin_isClick == false){
+        austin_checkBox.style.background = '#008000';
+        austin_checkBox.style.border = 'none';
+        austin_isClick = true;
+    }
+    else{
+        austin_checkBox.style.background = 'transparent';
+        austin_checkBox.style.border = ' 1.5px solid #00001a';
+        austin_isClick = false;
+    }
+});
+/* Author end */
