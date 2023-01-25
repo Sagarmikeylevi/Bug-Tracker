@@ -5,8 +5,10 @@ const port = 3000;
 // require the database
 const db = require('./config/mongoose');
 
-app.use(express.static('assets'));
+
 app.use(express.urlencoded());
+
+app.use(express.static('./assets'));
 
 //set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -15,9 +17,6 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 // Import the routes file
-const routes = require('./routes')
-
-// Use the routes in the app
-app.use('/', routes)
+app.use('/' , require('./routes'));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

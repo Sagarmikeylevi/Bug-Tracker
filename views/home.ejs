@@ -16,23 +16,29 @@
 
   <!-- show projects -->
   <div class="show-projects">
+    <% for(let project of projects){%>
       <!-- projects -->
       <div class="project">
         <!-- project-name -->
         <div class="project-name">
-          <i class="fa-solid fa-diagram-project"></i>
-          <p>Social</p>
+          <i class="fa-solid fa-diagram-project" id="<%= project.titleColor %>"></i>
+          <p>
+            <%= project.title %>
+          </p>
           <div class="project-more">
             <i class="ri-more-line"></i>
           </div>
           <!-- delete and update part -->
           <div class="delete-update">
-            <div class="delete">
-              <p>Delete</p>
-            </div>
+            <a href="/delete/<%= project.id %>">
+              <div class="delete">
+                <p>Delete</p>
+              </div>
+            </a>
             <div class="update">
               <p>Update</p>
             </div>
+
             <div class="exit">
               <i class="fa-solid fa-circle-xmark"></i>
             </div>
@@ -42,28 +48,118 @@
         <!-- project-name end -->
         <!-- project author -->
         <div class="project-author">
-          <p>Austin Blake</p>
+          <p>
+            <%= project.author %>
+          </p>
         </div>
         <!-- project author end -->
         <!-- project desciption -->
         <div class="project-desc">
-          <p>This is a social media project like facebook where you can connect with new people</p>
+          <p>
+            <%= project.description %>
+          </p>
         </div>
         <!-- project desciption end -->
         <!-- project others -->
         <div class="project-others">
-          <div class="project-type">
-            <p>Design</p>
+          <div class="<%= project.projectTypes %>">
+            <p>
+              <%= project.projectTypes %>
+            </p>
           </div>
 
-          <div class="project-urgency">
+          <div class="<%= project.priority %>">
             <i class="fa-solid fa-angles-up"></i>
-            <p>High</p>
+            <p>
+              <%= project.priority %>
+            </p>
           </div>
         </div>
         <!-- project others end -->
       </div>
       <!-- project end -->
+
+      <div class="update-project-form">
+        <!-- update-project-head -->
+        <div class="update-project-head">
+          <div class="update-project-head-focus">
+            <div class="update-project-head-focus-main">
+              <i class="fa-solid fa-pen-to-square"></i>
+              <p>Update the project</p>
+            </div>
+            <div class="update-project-head-focus-delete">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+
+          </div>
+
+          <div class="update-project-head-blur">
+            <p>Fill out these few details to update the project</p>
+          </div>
+
+        </div>
+
+        <!-- update-project-head end -->
+
+        <!-- update-project-form-details -->
+        <div class="update-project-form-details">
+          <form action="/update/<%= project.id %>" method="POST">
+            <div class="update-project-form-details-title">
+              <p>Title</p>
+              <div class="update-project-form-details-title-input">
+                <input type="text" name="title" placeholder="<%= project.title %>" required>
+              </div>
+            </div>
+            <div class="update-project-form-details-color">
+              <p>Title Color</p>
+              <select name="titleColor" required>
+                <option value="orange">Orange</option>
+                <option value="lime">Lime</option>
+                <option value="gold">Gold</option>
+                <option value="purple">Purple</option>
+              </select>
+            </div>
+            <div class="update-project-form-details-author">
+              <p>Author</p>
+              <input type="text" name="author" placeholder="<%= project.author %>" required>
+            </div>
+            <div class="update-project-form-details-describe">
+              <p>Describe</p>
+              <textarea cols="30" rows="8" name="description" placeholder="<%= project.description %>" required></textarea>
+            </div>
+            <div class="update-project-form-details-others">
+              <div class="update-project-form-details-others-project-types">
+                <p>Project Types</p>
+                <select name="projectTypes" required>
+                  <option value="Design">Design</option>
+                  <option value="Frontend">Frontend</option>
+                  <option value="Backend">Backend</option>
+                  <option value="Testing">Testing</option>
+                  <option value="Deployment">Deployment</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+              <div class="update-project-form-details-others-urgency">
+                <p>Poject Priority</p>
+                <select name="priority" required>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+            </div>
+            <div class="update-submit-button">
+              <button type="submit" value="submit">
+                <p>Submit</p>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- update-project-form-details end -->
+      </div>
+
+      <% } %>
+
   </div>
   <!-- show projects end -->
 </div>
@@ -71,5 +167,7 @@
 <div class="craete-project-form">
   <%- include('_createProject') -%>
 </div>
+
+
 <!-- Script -->
 <script src="JS/home.js"></script>
