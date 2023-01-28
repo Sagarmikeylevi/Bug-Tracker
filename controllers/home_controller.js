@@ -1,5 +1,8 @@
 const Project = require("../models/Project");
 module.exports.home = function(req , res){
+    if(!req.isAuthenticated()){
+        return res.redirect('/sign-in');
+    }
     Project.find({} , function(err , project){
         if(err) {console.log(`Error: ${err}`); return;}
         return res.render('home', { 
