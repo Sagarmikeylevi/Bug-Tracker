@@ -2,7 +2,7 @@ const express = require('express');
 const { appendFile } = require('fs');
 const router = express.Router();
 
-const ProjectController = require('../controllers/projectController');
+const SignUpController = require('../controllers/userSignUpController');
 
-router.get('/' , ProjectController.details);
+router.get('/' , SignUpController.signUp);
 module.exports = router;

@@ -1,0 +1,171 @@
+.signUpPage{
+    margin-left: 35%;
+    margin-top: 2rem;
+    height: 28rem;
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    cursor: pointer;
+    border-radius: 10px;
+    background:#fffcfc;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.signUpPage:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.signUpPageHead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    height: 5rem;
+    width: 100%;
+}
+
+.signUpPageHead .signUpPageHead-focus{
+    font-size: x-large;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.signUpPageHead .signUpPageHead-blur{
+    margin-top: 0.5rem;
+    font-size: small;
+    letter-spacing: 1px;
+    color: gray;
+}
+
+.signUp-details{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    height: 15rem;
+    width: 100%;
+}
+
+.signUp-details .signUp-name{
+    margin-left: 15%;
+    width: 70%;
+    height: 2rem;
+    opacity: 0.8;
+    border-bottom: 1px solid lightgray;
+}
+
+.signUp-details .signUp-name input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 5px;
+}
+
+.signUp-details .signUp-email{
+    margin-top: 1rem;
+    margin-left: 15%;
+    width: 70%;
+    height: 2rem;
+    opacity: 0.8;
+    border-bottom: 1px solid lightgray;
+}
+
+.signUp-details .signUp-email input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 5px;
+} 
+
+.signUp-details .signUp-password{
+    margin-top: 1rem;
+    margin-left: 15%;
+    width: 70%;
+    height: 2rem;
+    opacity: 0.8;
+    border-bottom: 1px solid lightgray;
+}
+
+.signUp-details .signUp-password input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 5px;
+} 
+
+.signUp-details .signUp-re-password{
+    margin-top: 1rem;
+    margin-left: 15%;
+    width: 70%;
+    height: 2rem;
+    opacity: 0.8;
+    border-bottom: 1px solid lightgray;
+}
+
+.signUp-details .signUp-re-password input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 5px;
+} 
+
+.signUp-details .signUp-submitBtn{
+    margin-top: 1.5rem;
+    margin-left: 20%;
+    width: 60%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    background: #000000;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.signUp-details .signUp-submitBtn button{
+    background: transparent;
+    border: none;
+    font-size: small;
+    font-weight: bold;
+    color: #fffcfc;
+}
+
+.signIn-route{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    margin-left: 27%;
+}
+
+.signIn-route p{
+    font-size: small;
+    opacity: 0.8;
+    margin-right: 0.2rem;
+}
+
+.signIn-route a{
+    font-size: small;
+    color: #000000;
+    font-weight: bold;
+    margin-right: 0.2rem;
+}

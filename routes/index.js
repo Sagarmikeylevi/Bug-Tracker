@@ -2,13 +2,13 @@ const express = require('express');
 const { appendFile } = require('fs');
 const router = express.Router();
 
-const HomeController = require('../controllers/home_controller');
-
-router.get('/' , HomeController.home);
-router.post('/create-project' , HomeController.createProject);
-router.get('/delete/:id' , HomeController.deleteProject);
-router.post('/update/:id' , HomeController.updateProject);
-router.use('/project' , require('./projects'));
+router.get('/' , function(req , res){
+    return res.redirect('/home');
+})
+router.use('/home' , require('./home'));
+router.use('/project-issue' , require('./project-issues'));
+router.use('/sign-in' , require('./sign-in'));
+router.use('/sign-up' , require('./sign-up'));
 
 
 console.log("Router Conneted");
