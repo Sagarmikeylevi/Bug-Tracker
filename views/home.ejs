@@ -4,8 +4,8 @@
   <div class="home-header">
 
     <div class="project-search-bar">
-      <input type="text" placeholder="Search projects here...">
-      <i class="ri-search-line"></i>
+      <input type="text" id="project-search-bar-input" placeholder="Search projects here..." onkeyup = "search()">
+      <i class="ri-search-line" id="project-search-bar-icon"></i>
     </div>
 
     <div class="create-project">
@@ -16,7 +16,7 @@
   <!-- home header end -->
 
   <!-- show projects -->
-  <div class="show-projects">
+  <div class="show-projects" id="show-projects">
     <% for(let project of projects){%>
       <!-- projects -->
       <div class="project">

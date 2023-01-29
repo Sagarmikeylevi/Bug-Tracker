@@ -58,3 +58,29 @@ for(let i=0; i<project_more.length; i++){
     });
 }
 
+/* searching elements */
+const search = ()=>{
+    const filter = document.getElementById('project-search-bar-input').value.toUpperCase();
+    const projectList = document.getElementById('show-projects');
+    const project = document.querySelectorAll('.project');
+    const projectTypes = document.querySelectorAll('.project-others');
+    const pname = projectList.getElementsByTagName('p');
+
+    for(let i = 0; i<project.length; i++){
+        let title = project[i].getElementsByTagName('p')[0];
+        let types = projectTypes[i].getElementsByTagName('p')[0];
+        if(title || types){
+            let textvalue = title.textContent || title.innerHTML;
+            let textvalue2 = types.textContent || types.innerHTML;
+            if((textvalue.toUpperCase().toUpperCase().indexOf(filter) > -1) || (textvalue2.toUpperCase().toUpperCase().indexOf(filter) > -1)){
+                project[i].style.display = "";
+            }else{
+                project[i].style.display = "none";
+            }
+        }
+    }
+}
+
+
+
+/* searching elements end */

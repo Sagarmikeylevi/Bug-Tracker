@@ -51,6 +51,7 @@ main{
 .project-search-bar i{
     font-size: large;
     color: #00001a;
+    cursor: pointer;
 }
 
 .create-project{
