@@ -54,13 +54,14 @@ main{
 }
 
 .create-project{
-    margin-top: 0.75rem;
+    margin-top: 1rem;
     margin-left: 10%;
-    height: 2.5rem;
+    height: 2rem;
     width: 9.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     border-radius: 5px;
     background: #751aff;
     cursor: pointer;
@@ -77,18 +78,18 @@ main{
 }
 
 .create-project i{
-    padding-left: 0.8rem;
+    
     padding-right: 5px;
-    font-size: larger;
+    font-size: medium;
     font-weight: bold;
     color: #ffff;
 }
 
 .create-project p{
-    font-size: medium;
+    font-size: small;
     letter-spacing: 1px;
     font-weight: bold;
-    word-spacing: 3px;
+    word-spacing: 2px;
     color: #ffff;
 }
 

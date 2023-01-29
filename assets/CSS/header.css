@@ -66,10 +66,6 @@
     margin-top: 0.5rem;
     height: 2rem;
     width: 6rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     background: #00001a;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -100,6 +96,18 @@
         color:  #00001a;
         letter-spacing: 1.2px;
         word-spacing: 3px;
+    }
+}
+
+@media screen and (max-width: 820px){
+    .user-name{
+        margin-left: 30%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .user-name{
+        margin-left: 20%;
     }
 }
 /* responsiveness end */
