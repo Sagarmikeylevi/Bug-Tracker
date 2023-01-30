@@ -1,3 +1,4 @@
+const { serializeUser } = require("passport");
 const Project = require("../models/Project");
 module.exports.home = function(req , res){
     if(!req.isAuthenticated()){
@@ -19,7 +20,8 @@ module.exports.createProject = function(req , res){
         author: req.body.author,
         description: req.body.description,
         projectTypes: req.body.projectTypes,
-        priority: req.body.priority
+        priority: req.body.priority,
+        user: req.user._id
     });
     Project.create(newProject , function(err , project){
         if(err) {console.log(`Error: ${err}`); return;}

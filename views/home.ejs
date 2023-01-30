@@ -26,25 +26,33 @@
           <p>
             <%= project.title %>
           </p>
-          <div class="project-more">
+          <% if(locals.user.id == project.user){ %>
+          <div class="project-more" id="project-more">
             <i class="ri-more-line"></i>
           </div>
-          <!-- delete and update part -->
-          <div class="delete-update">
-            <a href="home/delete/<%= project.id %>">
-              <div class="delete">
-                <p>Delete</p>
+          <% } %>
+          
+          <% if(locals.user.id == project.user){ %>
+            <!-- delete and update part -->
+          <div class="delete-update" id="delete-update">
+              <a href="home/delete/<%= project.id %>">
+                <div class="delete">
+                  <p>Delete</p>
+                </div>
+              </a>
+              <div class="update">
+                <p>Update</p>
               </div>
-            </a>
-            <div class="update">
-              <p>Update</p>
+  
+              <div class="exit" id="exit">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </div>
             </div>
-
-            <div class="exit">
-              <i class="fa-solid fa-circle-xmark"></i>
-            </div>
-          </div>
-          <!-- dlete and update part end -->
+            <!-- dlete and update part end -->
+            <% } %>
+          
+          
+          
         </div>
         <!-- project-name end -->
         <!-- project author -->
@@ -79,7 +87,7 @@
         <!-- project others end -->
       </div>
       <!-- project end -->
-
+      <% if(locals.user.id == project.user){ %>
       <div class="update-project-form">
         <!-- update-project-head -->
         <div class="update-project-head">
@@ -122,7 +130,7 @@
             </div>
             <div class="update-project-form-details-author">
               <p>Author</p>
-              <input type="text" name="author" placeholder="<%= project.author %>" required>
+              <input type="text" name="author" value="<%= project.author %>" required>
             </div>
             <div class="update-project-form-details-describe">
               <p>Describe</p>
@@ -158,6 +166,7 @@
         </div>
         <!-- update-project-form-details end -->
       </div>
+      <% } %>
 
       <% } %>
 
