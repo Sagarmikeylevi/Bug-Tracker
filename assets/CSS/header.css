@@ -99,15 +99,21 @@
     }
 }
 
-@media screen and (max-width: 820px){
+@media screen and (max-width: 900px){
     .user-name{
-        margin-left: 30%;
+        margin-left: 28%;
     }
 }
 
 @media screen and (max-width: 600px){
     .user-name{
         margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .user-name{
+        margin-left: 15%;
     }
 }
 /* responsiveness end */
