@@ -24,7 +24,7 @@
         <div class="project-name">
           <i class="fa-solid fa-diagram-project" id="<%= project.titleColor %>"></i>
           <p>
-            <%= project.title %>
+            <a href="/details/<%= project.id %>"><%= project.title %></a>
           </p>
           <% if(locals.user.id == project.user){ %>
           <div class="project-more" id="project-more">
@@ -180,4 +180,4 @@
 
 
 <!-- Script -->
-<script src="JS/home.js"></script>
+<script src="/JS/home.js"></script>

@@ -38,11 +38,14 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticateduser);
 
-//set the view engine to ejs
-app.set('view engine', 'ejs');
+
 
 // express layouts
 app.use(expressLayouts);
+
+//set the view engine to ejs
+app.set('view engine', 'ejs');
+app.set('views' , './views');
 
 // Import the routes file
 app.use('/' , require('./routes'));

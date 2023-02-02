@@ -3,6 +3,7 @@ let filter_button = document.querySelector('.filter-issues');
 let filter_form = document.querySelector('.create-filter-form');
 let issue_type = document.querySelector('.issue-type');
 filter_button.addEventListener('click' , ()=>{
+    console.log('click');
     filter_form.style.display = 'block';
     issue_type.style.opacity = '0.2';
 });
@@ -146,3 +147,52 @@ austin_checkBox.addEventListener('click' , ()=>{
     }
 });
 /* Author end */
+
+/* create issues */
+let createIssueBtn = document.getElementById('new-rq-add');
+let issueHead = document.getElementById('project-details-header');
+let issueType = document.getElementById('issue-type');
+let issueForm = document.getElementById('create-project-issue-form');
+let issueFormDel = document.getElementById('create-project-issue-head-focus-delete');
+
+createIssueBtn.addEventListener('click' , ()=>{
+    issueHead.style.opacity = '0.2';
+    issueType.style.opacity = '0.2';
+    issueForm.style.display = 'block';
+});
+
+issueFormDel.addEventListener('click' , ()=>{
+    issueHead.style.opacity = '1';
+    issueType.style.opacity = '1';
+    issueForm.style.display = 'none';
+});
+
+/* create issues end*/
+
+/* issue type style */
+let issueTypeArray = document.getElementsByClassName('new-rq-body-details-issue-type');
+
+for(let i = 0; i<issueTypeArray.length; i++){
+    let issueName = issueTypeArray[i].getElementsByTagName('p');
+    if(issueName[0].innerHTML == "BUGS"){
+        issueTypeArray[i].classList.add('bugs');
+    }
+    if(issueName[0].innerHTML == "UI DESIGN"){
+        issueTypeArray[i].classList.add('uiDesign');
+    }
+    if(issueName[0].innerHTML == "DOCUMENTATION"){
+        issueTypeArray[i].classList.add('documentation');
+    }
+    if(issueName[0].innerHTML == "ENHANCEMENT"){
+        issueTypeArray[i].classList.add('enhancement');
+    }
+    if(issueName[0].innerHTML == "DUPLICATE"){
+        issueTypeArray[i].classList.add('duplicate');
+    }
+}
+
+let newRqTotal = document.getElementById('new-rq-total');
+newRqTotal.innerHTML = issueTypeArray.length;
+
+
+/* issue type style end */

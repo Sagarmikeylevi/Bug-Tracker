@@ -1,0 +1,65 @@
+<!-- create-project-issue-head -->
+<div class="create-project-issue-head">
+    <div class="create-project-issue-head-focus">
+        <div class="create-project-issue-head-focus-main">
+            <i class="ri-bring-forward"></i>
+            <p>Create a new issue</p>
+        </div>
+        <div class="create-project-issue-head-focus-delete" id="create-project-issue-head-focus-delete">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        
+    </div>
+
+    <div class="create-project-issue-head-blur">
+        <p>Fill out these few details to start a new issue</p>
+    </div>
+    
+</div>
+
+<!-- create-project-issue-head end -->
+
+<!-- create-project-issue-form-details -->
+<div class="create-project-issue-form-details">
+    <form action="/details/create-issue" method="POST">
+        <div class="create-project-issue-form-details-types">
+            <p>Issue Types</p>
+            <select name="issueType" required>
+                <option value="BUGS">Bugs</option>
+                <option value="UI DESIGN">UI Design</option>
+                <option value="DOCUMENTATION">Documentation</option>
+                <option value="ENHANCEMENT">Enhancement</option>
+                <option value="DUPLICATE">Duplicate</option>
+            </select>
+        </div>
+        <div class="create-project-issue-form-details-title">
+            <p>Title</p>
+            <div class="create-project-issue-form-details-title-input">
+                <input type="text" name="title" placeholder="write a title..." required>
+            </div>
+        </div>
+        
+        <div class="create-project-issue-form-details-author">
+            <p>Author</p>
+            <input type="text" name="author" value="<%= locals.user.name %>">
+        </div>
+        <div class="create-project-issue-form-details-describe">
+            <p>Describe</p>
+            <textarea cols="30" rows="8" name="description" required></textarea>
+        </div>
+        
+        <div class="create-project-issue-form-details-urgency">
+            <p>Poject Priority</p>
+            <select name="priority" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <div class="project-issue-submit-button">
+            <button type="submit" value="submit"><p>Submit</p></button>
+        </div>
+    </form>
+</div>
+<!-- create-project-form-details end -->

@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    /* display: none; */
     border-bottom: 1px solid lightgray;
 }
 
@@ -12,7 +13,7 @@
     margin-left: 20%;
     margin-right: 15%;
     height: 5rem;
-    width: 10rem;
+    width: 11rem;
     display: flex;
     flex-direction: column;
 }
@@ -27,13 +28,13 @@
 .project-details-project-name .name::before{
     content: ' ';
     height: 1.2rem;
-    width: 0.7rem;
+    width: 0.5rem;
     background: #ff6600;
 }
 
 .project-details-project-name .name p{
     margin: 0.5rem;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
     letter-spacing: 1px;
     color: #00001a;
@@ -43,6 +44,7 @@
     margin-top: 0.5rem;
     margin-left: 0.5rem;
     height: 2rem;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -156,7 +158,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* opacity: 0.2; */
+    /* display: none; */
     overflow: scroll;
     justify-content: space-evenly;
 }
@@ -259,6 +261,7 @@
     background: #fffcfc;
     border-radius: 5px;
     display: flex;
+    cursor: pointer;
     transition: all ease-in-out 0.5s;
     flex-direction: row;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -283,7 +286,55 @@
     flex-direction: column;
 }
 
-.new-rq-body-details .new-rq-body-details-issue-type{
+.new-rq-body-details-head{
+    display: flex;
+    flex-direction: row;
+}
+.new-rq-body-details-issue-delete{
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.8rem;
+    display: none;
+    
+    font-size: medium;
+    margin-left: 5rem;
+}
+
+.new-rq-body-details-issue-delete a{
+    text-decoration: none;
+    color: #00001a;
+}
+.new-rq-body-details:hover .new-rq-body-details-issue-delete{
+    display: block;
+}
+
+/* .new-rq-body-details .new-rq-body-details-issue-type{
+    
+} */
+
+.bugs{
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    width: 4rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-size: smaller;
+    background:#8c1aff;
+    color:#f9e6ff;
+    margin-right: 6rem;
+    font-weight: 600;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.uiDesign{
     margin-top: 0.5rem;
     height: 1.5rem;
     width: 5rem;
@@ -294,13 +345,64 @@
     justify-content: center;
     letter-spacing: 1px;
     font-size: smaller;
-    background: #ff6600;
-    opacity: 0.8;
-    color: #fffcfc;
+    background: #ff8000;
+    color:#fff2e6;
     font-weight: 600;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    margin-right: 5rem;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
+.documentation{
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    width: 8rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-size: smaller;
+    background:#cccc00;
+    color:#ffffe6;
+    font-weight: 600;
+    margin-right: 2rem;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+.enhancement{
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    width: 8rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-size: smaller;
+    background:#990099;
+    color:#ffe6ff;
+    font-weight: 600;
+    margin-right: 2rem;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+.duplicate{
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    width: 6rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-size: smaller;
+    background:#009900;
+    color:#e6ffe6;
+    font-weight: 600;
+    margin-right: 4rem;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
 .new-rq-body-details .new-rq-body-details-issue-name{
     margin-top: 0.5rem;
     height: 1.5rem;
@@ -803,6 +905,9 @@
     .search-issues .search-box input{
         font-size: 0.7rem;
     }
+    .project-details-project-name{
+        margin-right: 6%;
+    }
 }
 
 /* create-filter-form */
@@ -1158,3 +1263,340 @@
 }
 /* create-filter-form-submit end */
 /* create-filter-form end */
+
+/* create-project-issue-form */
+.create-project-issue-form{
+    height: 30rem;
+    width: 25rem;
+    position: absolute;
+    top: 1rem;
+    left: 35%;
+    display: none;
+    border-radius: 5px;
+    transform: translateX(200px);
+    animation: animate-form 200ms ease-in forwards;
+    background:#e6fff2;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@keyframes animate-form {
+    0%{
+        transform: translateX(150px);
+    }
+    25%{
+        transform: translateX(100px);
+    }
+    50%{
+        transform: translateX(50px);
+    }
+    75%{
+        transform: translateX(25px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.create-project-issue-form:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.create-project-issue-head{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.create-project-issue-head-focus{
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    margin-left: 1.5rem;
+    color: #00001a;
+    letter-spacing: 1px;
+}
+
+.create-project-issue-head-focus-main{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.create-project-issue-head-focus .create-project-issue-head-focus-main i{
+    margin-left: 0.5rem;
+    margin-right: 0.2rem;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.create-project-issue-head-focus .create-project-issue-head-focus-delete i{
+    font-size: larger;
+    color: #00001a;
+    cursor: pointer;
+}
+
+.create-project-issue-head-blur{
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+    font-size: small;
+    color: gray;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.create-project-issue-form-details{
+    height: 23rem;
+    margin-left: 10%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-project-issue-form-details-types{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-project-issue-form-details-types p{
+    font-size: small;
+    margin-left: 1rem;
+    font-weight: bold;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+.create-project-issue-form-details-types select{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 1.8rem;
+    display: flex;
+    opacity: 0.8;
+    align-items: center;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    color: #00001a;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding-left: 10px;
+    border-radius: 5px;
+    transition: all ease-in-out 0.5s;
+    outline: none;
+    background: transparent;
+    font-size: smaller;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    z-index: 100;
+}
+
+.create-project-issue-form-details-types select:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+
+.create-project-issue-form-details-title{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-project-issue-form-details-title p{
+    font-size: small;
+    margin-left: 1rem;
+    font-weight: bold;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+.create-project-issue-form-details-title-input{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    z-index: 100;
+}
+.create-project-issue-form-details-title-input input{
+    width: 100%;
+    height: 100%;
+    letter-spacing: 1px;
+    color: #00001a;
+    font-weight: 600;
+    cursor: pointer;
+    padding-left: 10px;
+    border-radius: 5px;
+    border-color: transparent;
+    transition: all ease-in-out 0.5s;
+    outline: none;
+    background: transparent;
+    font-size: smaller;
+}
+
+.create-project-issue-form-details-title-input:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+
+.create-project-issue-form-details-author{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-project-issue-form-details-author p{
+    font-size: small;
+    margin-left: 1rem;
+    font-weight: bold;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+.create-project-issue-form-details-author input{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    color: #00001a;
+    font-weight: 600;
+    cursor: pointer;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all ease-in-out 0.5s;
+    outline: none;
+    background: transparent;
+    font-size: smaller;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    z-index: 100;
+}
+
+.create-project-issue-form-details-author input:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+
+.create-project-issue-form-details-describe{
+    height: 6rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.create-project-issue-form-details-describe p{
+    font-size: small;
+    margin-left: 1rem;
+    font-weight: bold;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+.create-project-issue-form-details-describe textarea{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 3.5rem;
+    display: flex;
+    letter-spacing: 1px;
+    color: #00001a;
+    font-weight: 600;
+    cursor: pointer;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: all ease-in-out 0.5s;
+    outline: none;
+    padding-top: 10px;
+    background: transparent;
+    font-size: small;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    z-index: 100;
+}
+.create-project-issue-form-details-describe textarea:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+
+.create-project-issue-form-details-urgency{
+    height: 3rem;
+    width: 100%;
+    z-index: 100;
+}
+.create-project-issue-form-details-urgency p{
+    font-size: small;
+    font-weight: bold;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    margin-left: 1rem;
+}
+.create-project-issue-form-details-urgency select{
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    color: #00001a;
+    font-weight: 600;
+    cursor: pointer;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+    opacity: 0.8;
+    transition: all ease-in-out 0.5s;
+    outline: none;
+    background: transparent;
+    font-size: smaller;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    z-index: 100;
+}
+.create-project-issue-form-details-urgency select:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+
+.project-issue-submit-button{
+    height: 2rem;
+    width: 5rem;
+    margin-top: 0.5rem;
+    margin-left: 35%;
+}
+
+.project-issue-submit-button p{
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffff;
+}
+.project-issue-submit-button button{
+    height: 100%;
+    width: 100%;
+    background:#00b359;
+    border-radius: 5px;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.project-issue-submit-button button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+/* create-project-issue-form end */
+
+

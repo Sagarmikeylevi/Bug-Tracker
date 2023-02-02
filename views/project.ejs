@@ -1,13 +1,16 @@
-
 <!-- project-details-header -->
-<div class="project-details-header">
+<div class="project-details-header" id="project-details-header">
     <div class="project-details-project-name">
         <div class="name">
-            <p>Social</p>
+            <p>
+                <%= Project.title %>
+            </p>
         </div>
         <div class="author">
             <i class="ri-bubble-chart-fill"></i>
-            <p>Austin Blake</p>
+            <p>
+                <%= Project.author %>
+            </p>
         </div>
     </div>
 
@@ -28,96 +31,49 @@
 <!-- project-details-header end -->
 
 <!-- issue-type -->
-<div class="issue-type">
+<div class="issue-type" id="issue-type">
     <!-- new-rq -->
     <div class="new-rq">
         <div class="new-rq-head">
             <p>New Request</p>
-            <span>3</span>
-            <div class="new-rq-add"><i class="fa-solid fa-plus"></i></div>
+            <span id="new-rq-total"></span>
+            <div class="new-rq-add" id="new-rq-add"><i class="fa-solid fa-plus"></i></div>
         </div>
 
         <div class="new-rq-body">
-            <!-- new body setup -->
-            <div class="new-rq-body-post">
-                <div class="style-bar-new-rq"></div>
-                <div class="new-rq-body-details">
-                    <div class="new-rq-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-others">
-                        <div class="new-rq-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
+            <% for(let issue of Issue){%>
+                <!-- new body setup -->
+                <div class="new-rq-body-post" draggable="true">
+                    <div class="style-bar-new-rq"></div>
+                    <div class="new-rq-body-details">
+                        <div class="new-rq-body-details-head">
+                            <div class="new-rq-body-details-issue-type">
+                                <p><%= issue.issueType %></p>
+                            </div>
+                            <div class="new-rq-body-details-issue-delete">
+                               <a href="/details/delete/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+                            </div>
                         </div>
-                        <div class="new-rq-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
+                        <div class="new-rq-body-details-issue-name">
+                            <i class="ri-coupon-3-line"></i>
+                            <p><%= issue.title %></p>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
-
-            <!-- new body setup -->
-            <div class="new-rq-body-post">
-                <div class="style-bar-new-rq"></div>
-                <div class="new-rq-body-details">
-                    <div class="new-rq-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-others">
-                        <div class="new-rq-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
+                        <div class="new-rq-body-details-issue-description">
+                            <p><%= issue.description %></p>
                         </div>
-                        <div class="new-rq-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
+                        <div class="new-rq-body-details-issue-others">
+                            <div class="new-rq-body-details-issue-others-name">
+                                <p><%= issue.author %></p>
+                            </div>
+                            <div class="new-rq-body-details-issue-others-urgency">
+                                <i class="fa-solid fa-angles-up"></i>
+                                <p><%= issue.priority %></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- new body setup end -->
-
-            <!-- new body setup -->
-            <div class="new-rq-body-post">
-                <div class="style-bar-new-rq"></div>
-                <div class="new-rq-body-details">
-                    <div class="new-rq-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="new-rq-body-details-issue-others">
-                        <div class="new-rq-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
-                        </div>
-                        <div class="new-rq-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
+                <!-- new body setup end -->
+            <%}%>
 
         </div>
     </div>
@@ -128,64 +84,9 @@
         <div class="in-progress-head">
             <p>In Progress</p>
             <span>3</span>
-            <div class="in-progress-add"><i class="fa-solid fa-plus"></i></div>
         </div>
 
         <div class="in-progress-body">
-            <!-- new body setup -->
-            <div class="in-progress-body-post">
-                <div class="style-bar-in-progress"></div>
-                <div class="in-progress-body-details">
-                    <div class="in-progress-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-others">
-                        <div class="in-progress-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
-                        </div>
-                        <div class="in-progress-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
-
-            <!-- new body setup -->
-            <div class="in-progress-body-post">
-                <div class="style-bar-in-progress"></div>
-                <div class="in-progress-body-details">
-                    <div class="in-progress-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-others">
-                        <div class="in-progress-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
-                        </div>
-                        <div class="in-progress-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
-
             <!-- new body setup -->
             <div class="in-progress-body-post">
                 <div class="style-bar-in-progress"></div>
@@ -221,64 +122,9 @@
         <div class="complete-head">
             <p>Complete</p>
             <span>3</span>
-            <div class="complete-add"><i class="fa-solid fa-plus"></i></div>
         </div>
 
         <div class="complete-body">
-            <!-- new body setup -->
-            <div class="complete-body-post">
-                <div class="style-bar-complete"></div>
-                <div class="complete-body-details">
-                    <div class="complete-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="complete-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="complete-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="complete-body-details-issue-others">
-                        <div class="complete-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
-                        </div>
-                        <div class="complete-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
-
-            <!-- new body setup -->
-            <div class="complete-body-post">
-                <div class="style-bar-complete"></div>
-                <div class="complete-body-details">
-                    <div class="complete-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="complete-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="complete-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="complete-body-details-issue-others">
-                        <div class="complete-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
-                        </div>
-                        <div class="complete-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
-
             <!-- new body setup -->
             <div class="complete-body-post">
                 <div class="style-bar-complete"></div>
@@ -313,5 +159,9 @@
 <div class="create-filter-form">
     <%- include('_filter') -%>
 </div>
+
+<div class="create-project-issue-form" id="create-project-issue-form">
+    <%- include('_createIssues') -%>
+</div>
 <!-- script -->
-<script src="JS/project.js"></script>
+<script src="/JS/project.js"></script>
