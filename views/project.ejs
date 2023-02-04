@@ -36,14 +36,14 @@
     <div class="new-rq">
         <div class="new-rq-head">
             <p>New Request</p>
-            <span id="new-rq-total"></span>
+            <span id="new-rq-total">0</span>
             <div class="new-rq-add" id="new-rq-add"><i class="fa-solid fa-plus"></i></div>
         </div>
 
         <div class="new-rq-body">
-            <% for(let issue of Issue){%>
+            <% for(let issue of NewIssues){%>
                 <!-- new body setup -->
-                <div class="new-rq-body-post" draggable="true">
+                <div class="new-rq-body-post">
                     <div class="style-bar-new-rq"></div>
                     <div class="new-rq-body-details">
                         <div class="new-rq-body-details-head">
@@ -51,7 +51,7 @@
                                 <p><%= issue.issueType %></p>
                             </div>
                             <div class="new-rq-body-details-issue-delete">
-                               <a href="/details/delete/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+                               <a href="/details/delete-new/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
                             </div>
                         </div>
                         <div class="new-rq-body-details-issue-name">
@@ -65,12 +65,17 @@
                             <div class="new-rq-body-details-issue-others-name">
                                 <p><%= issue.author %></p>
                             </div>
-                            <div class="new-rq-body-details-issue-others-urgency">
+                            <div class="new-rq-body-details-issue-others-urgency-<%= issue.priority %>">
                                 <i class="fa-solid fa-angles-up"></i>
                                 <p><%= issue.priority %></p>
                             </div>
+                            <div class="move-to-inprocess">
+                                <a href="/details/move-inprocess/<%= issue.id %> "><i class="ri-arrow-right-circle-fill"></i></a>
+                            </div>
                         </div>
+                        
                     </div>
+                    
                 </div>
                 <!-- new body setup end -->
             <%}%>
@@ -83,36 +88,49 @@
     <div class="in-progress">
         <div class="in-progress-head">
             <p>In Progress</p>
-            <span>3</span>
+            <span id="inprocess-total">0</span>
         </div>
 
         <div class="in-progress-body">
-            <!-- new body setup -->
-            <div class="in-progress-body-post">
-                <div class="style-bar-in-progress"></div>
-                <div class="in-progress-body-details">
-                    <div class="in-progress-body-details-issue-type">
-                        <p>UI DESIGN</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
-                    </div>
-                    <div class="in-progress-body-details-issue-others">
-                        <div class="in-progress-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
+            
+            <% for(let issue of InProcessIssue){%>
+                <!-- new body setup -->
+                <div class="in-progress-body-post">
+                    <div class="style-bar-in-progress"></div>
+                    <div class="in-progress-body-details">
+                        <div class="in-progress-body-head">
+                            <div class="in-progress-body-details-issue-type">
+                                <p><%= issue.issueType %></p>
+                            </div>
+                            <div class="in-progress-body-details-issue-delete">
+                               <a href="/details/delete-inprocess/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+                            </div>
                         </div>
-                        <div class="in-progress-body-details-issue-others-urgency">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
+                        <div class="in-progress-body-details-issue-name">
+                            <i class="ri-coupon-3-line"></i>
+                            <p><%= issue.title %></p>
+                        </div>
+                        <div class="in-progress-body-details-issue-description">
+                            <p><%= issue.description %></p>
+                        </div>
+    
+                        <div class="in-progress-body-details-issue-others">
+                            <div class="in-progress-body-details-issue-others-name">
+                                <p><%= issue.author %></p>
+                            </div>
+                            <div class="in-progress-body-details-issue-others-urgency-<%= issue.priority %>">
+                                <i class="fa-solid fa-angles-up"></i>
+                                <p><%= issue.priority %></p>
+                            </div>
+                            <div class="move-to-complete">
+                                <a href="/details/move-complete/<%= issue.id %> "><i class="ri-arrow-right-circle-fill"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- new body setup end -->
+                <!-- new body setup end -->
+           <% } %>
+            
         </div>
     </div>
     <!-- in-progress end -->
@@ -121,36 +139,43 @@
     <div class="complete">
         <div class="complete-head">
             <p>Complete</p>
-            <span>3</span>
+            <span id="completed-total">0</span>
         </div>
 
         <div class="complete-body">
+          <% for(let issue of Completed){%>  
             <!-- new body setup -->
             <div class="complete-body-post">
                 <div class="style-bar-complete"></div>
                 <div class="complete-body-details">
-                    <div class="complete-body-details-issue-type">
-                        <p>UI DESIGN</p>
+                    <div class="complete-body-head">
+                        <div class="complete-body-details-issue-type">
+                            <p><%= issue.issueType %></p>
+                        </div>
+                        <div class="complete-body-details-issue-delete">
+                           <a href="/details/delete-completed/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+                        </div>
                     </div>
                     <div class="complete-body-details-issue-name">
                         <i class="ri-coupon-3-line"></i>
-                        <p>Design the navbar</p>
+                        <p><%= issue.title %></p>
                     </div>
                     <div class="complete-body-details-issue-description">
-                        <p>Make a navbar design with home,profile,about,story with in it.</p>
+                        <p><%= issue.description %></p>
                     </div>
                     <div class="complete-body-details-issue-others">
                         <div class="complete-body-details-issue-others-name">
-                            <p>Natasha Barber</p>
+                            <p><%= issue.author %></p>
                         </div>
-                        <div class="complete-body-details-issue-others-urgency">
+                        <div class="complete-body-details-issue-others-urgency-<%= issue.priority %>">
                             <i class="fa-solid fa-angles-up"></i>
-                            <p>High</p>
+                            <p><%= issue.priority %></p>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- new body setup end -->
+          <% } %>  
         </div>
     </div>
     <!-- complete end -->

@@ -156,8 +156,8 @@ let issueForm = document.getElementById('create-project-issue-form');
 let issueFormDel = document.getElementById('create-project-issue-head-focus-delete');
 
 createIssueBtn.addEventListener('click' , ()=>{
-    issueHead.style.opacity = '0.2';
-    issueType.style.opacity = '0.2';
+    issueHead.style.opacity = '0.1';
+    issueType.style.opacity = '0.1';
     issueForm.style.display = 'block';
 });
 
@@ -169,30 +169,89 @@ issueFormDel.addEventListener('click' , ()=>{
 
 /* create issues end*/
 
-/* issue type style */
-let issueTypeArray = document.getElementsByClassName('new-rq-body-details-issue-type');
+/* new issue type style */
+let NewissueTypeArray = document.getElementsByClassName('new-rq-body-details-issue-type');
 
-for(let i = 0; i<issueTypeArray.length; i++){
-    let issueName = issueTypeArray[i].getElementsByTagName('p');
+for(let i = 0; i<NewissueTypeArray.length; i++){
+    let issueName = NewissueTypeArray[i].getElementsByTagName('p');
     if(issueName[0].innerHTML == "BUGS"){
-        issueTypeArray[i].classList.add('bugs');
+        NewissueTypeArray[i].classList.add('bugs');
     }
-    if(issueName[0].innerHTML == "UI DESIGN"){
-        issueTypeArray[i].classList.add('uiDesign');
+    if(issueName[0].innerHTML == "INVALID"){
+        NewissueTypeArray[i].classList.add('invalid');
     }
     if(issueName[0].innerHTML == "DOCUMENTATION"){
-        issueTypeArray[i].classList.add('documentation');
+        NewissueTypeArray[i].classList.add('documentation');
     }
     if(issueName[0].innerHTML == "ENHANCEMENT"){
-        issueTypeArray[i].classList.add('enhancement');
+        NewissueTypeArray[i].classList.add('enhancement');
     }
     if(issueName[0].innerHTML == "DUPLICATE"){
-        issueTypeArray[i].classList.add('duplicate');
+        NewissueTypeArray[i].classList.add('duplicate');
     }
 }
 
 let newRqTotal = document.getElementById('new-rq-total');
-newRqTotal.innerHTML = issueTypeArray.length;
+newRqTotal.innerHTML = NewissueTypeArray.length;
+
+/* new issue type style end */
+/* inprocess issue type */
+let IPissueTypeArray = document.getElementsByClassName('in-progress-body-details-issue-type');
+
+for(let i = 0; i<IPissueTypeArray.length; i++){
+    let issueName = IPissueTypeArray[i].getElementsByTagName('p');
+    if(issueName[0].innerHTML == "BUGS"){
+        IPissueTypeArray[i].classList.add('bugs');
+    }
+    if(issueName[0].innerHTML == "INVALID"){
+        IPissueTypeArray[i].classList.add('invalid');
+    }
+    if(issueName[0].innerHTML == "DOCUMENTATION"){
+        IPissueTypeArray[i].classList.add('documentation');
+    }
+    if(issueName[0].innerHTML == "ENHANCEMENT"){
+        IPissueTypeArray[i].classList.add('enhancement');
+    }
+    if(issueName[0].innerHTML == "DUPLICATE"){
+        IPissueTypeArray[i].classList.add('duplicate');
+    }
+
+    let inProcessTotal = document.getElementById('inprocess-total');
+    inProcessTotal.innerHTML = IPissueTypeArray.length;
+}
+
+/* inprocess issue type end */
+
+/* completed issue type */
+let CompletedissueTypeArray = document.getElementsByClassName('complete-body-details-issue-type');
+
+for(let i = 0; i<CompletedissueTypeArray.length; i++){
+    let issueName = CompletedissueTypeArray[i].getElementsByTagName('p');
+    if(issueName[0].innerHTML == "BUGS"){
+        CompletedissueTypeArray[i].classList.add('bugs');
+    }
+    if(issueName[0].innerHTML == "INVALID"){
+        CompletedissueTypeArray[i].classList.add('invalid');
+    }
+    if(issueName[0].innerHTML == "DOCUMENTATION"){
+        CompletedissueTypeArray[i].classList.add('documentation');
+    }
+    if(issueName[0].innerHTML == "ENHANCEMENT"){
+        CompletedissueTypeArray[i].classList.add('enhancement');
+    }
+    if(issueName[0].innerHTML == "DUPLICATE"){
+        CompletedissueTypeArray[i].classList.add('duplicate');
+    }
+
+    let completedTotal = document.getElementById('completed-total');
+    completedTotal.innerHTML = CompletedissueTypeArray.length;
+}
+/* completed issue type end */
 
 
-/* issue type style end */
+
+
+
+
+
+

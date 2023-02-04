@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const issueSchema = new Schema({
+const CompletedIssueSchema = new Schema({
     issueType: {
         type: String,
         required: true
@@ -30,5 +30,5 @@ const issueSchema = new Schema({
     timestamps: true
 });
 
-const Issue = mongoose.model('Issue' , issueSchema);
-module.exports = Issue;
+const CompletedIssue = mongoose.model('CompletedIssue' , CompletedIssueSchema);
+module.exports = CompletedIssue;
