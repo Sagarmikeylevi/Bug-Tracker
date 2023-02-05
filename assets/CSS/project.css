@@ -99,6 +99,7 @@
 
 .search-issues .search-box input{
     width: 90%;
+    height: 100%;
     background: transparent;
     border: none;
     outline: none;

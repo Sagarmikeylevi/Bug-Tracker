@@ -248,7 +248,60 @@ for(let i = 0; i<CompletedissueTypeArray.length; i++){
 }
 /* completed issue type end */
 
+/* search issues */
+// const searchInput = ;
+const search = ()=>{
+    const filter = document.getElementById('issue-search-bar-input').value.toUpperCase();
+    const issueList = document.getElementById('new-rq-body');
+    const newIssue = document.querySelectorAll('.new-rq-body-post');
+    const IPissue = document.querySelectorAll('.in-progress-body-post');
+    const completeIssue = document.querySelectorAll('.complete-body-post');
+    const titleBar1 = document.querySelectorAll('.new-rq-body-details-issue-name');
+    const titleBar2 = document.querySelectorAll('.in-progress-body-details-issue-name');
+    const titleBar3 = document.querySelectorAll('.complete-body-details-issue-name');
 
+    for(let i = 0; i<newIssue.length; i++){
+        let title1 = titleBar1[i].getElementsByTagName('p')[0];
+    
+        if(title1){
+            let textvalue1 = title1.textContent || title1.innerHTML;
+            let text1 = textvalue1.toUpperCase().indexOf(filter);
+            
+            if((text1 > -1)){
+                newIssue[i].style.display = "";
+            }else{
+                 newIssue[i].style.display = "none";
+            }
+        }
+    }
+
+    for(let i = 0; i<IPissue.length; i++){
+        let title2 = titleBar2[i].getElementsByTagName('p')[0];
+        if(title2){
+            let textvalue2 = title2.textContent || title2.innerHTML;
+            let text2 = textvalue2.toUpperCase().indexOf(filter);
+            if((text2 > -1)){
+                IPissue[i].style.display = "";
+            }else{
+                IPissue[i].style.display = "none";
+            }
+        }
+    }
+
+    for(let i = 0; i<completeIssue.length; i++){
+        let title3 = titleBar3[i].getElementsByTagName('p')[0];
+        if(title3){
+            let textvalue3 = title3.textContent || title3.innerHTML;
+            let text3 = textvalue3.toUpperCase().indexOf(filter);
+            if((text3 > -1)){
+                completeIssue[i].style.display = "";
+            }else{
+                completeIssue[i].style.display = "none";
+            }
+        }
+    }
+}
+/* search issues end */
 
 
 

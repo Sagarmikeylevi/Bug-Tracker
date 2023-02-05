@@ -17,7 +17,7 @@
     <div class="search-issues">
         <div class="search-box">
             <i class="ri-search-line"></i>
-            <input type="text" placeholder="Search issues..">
+            <input type="text" id="issue-search-bar-input" placeholder="Search issues.." onkeyup = "search()">
         </div>
         <div class="search-btn">
             <p>Search</p>
@@ -40,7 +40,7 @@
             <div class="new-rq-add" id="new-rq-add"><i class="fa-solid fa-plus"></i></div>
         </div>
 
-        <div class="new-rq-body">
+        <div class="new-rq-body" id="new-rq-body">
             <% for(let issue of NewIssues){%>
                 <!-- new body setup -->
                 <div class="new-rq-body-post">
@@ -54,7 +54,7 @@
                                <a href="/details/delete-new/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
                             </div>
                         </div>
-                        <div class="new-rq-body-details-issue-name">
+                        <div class="new-rq-body-details-issue-name" id="new-rq-body-details-issue-name">
                             <i class="ri-coupon-3-line"></i>
                             <p><%= issue.title %></p>
                         </div>

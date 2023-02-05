@@ -72,7 +72,7 @@ const search = ()=>{
         if(title || types){
             let textvalue = title.textContent || title.innerHTML;
             let textvalue2 = types.textContent || types.innerHTML;
-            if((textvalue.toUpperCase().toUpperCase().indexOf(filter) > -1) || (textvalue2.toUpperCase().toUpperCase().indexOf(filter) > -1)){
+            if((textvalue.toUpperCase().indexOf(filter) > -1) || (textvalue2.toUpperCase().indexOf(filter) > -1)){
                 project[i].style.display = "";
             }else{
                 project[i].style.display = "none";
