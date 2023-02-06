@@ -21,7 +21,7 @@
 
 <!-- create-project-issue-form-details -->
 <div class="create-project-issue-form-details">
-    <form action="/details/create-issue" method="POST">
+    <form action="/details/create-issue/<%= Project.id %>" method="POST">
         <div class="create-project-issue-form-details-types">
             <p>Issue Types</p>
             <select name="issueType" required>

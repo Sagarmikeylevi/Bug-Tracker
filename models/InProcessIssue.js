@@ -26,6 +26,10 @@ const InProcessIssueSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
+    project: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Project'
+    }
 },{
     timestamps: true
 });

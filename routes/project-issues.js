@@ -6,7 +6,7 @@ const ProjectIssueController = require('../controllers/project-issue_Controller'
 const { route } = require('./home');
 
 router.get('/:id' , ProjectIssueController.projectIssues);
-router.post('/create-issue' , ProjectIssueController.createIssue);
+router.post('/create-issue/:id' , ProjectIssueController.createIssue);
 router.get('/delete-new/:id' , ProjectIssueController.deleteIssue);
 router.get('/move-inprocess/:id' , ProjectIssueController.MoveToInProcess);
 router.get('/delete-inprocess/:id' , ProjectIssueController.IPIsuueDelete);

@@ -35,7 +35,9 @@
     letter-spacing: 1.2px;
     word-spacing: 3px;
 }
-
+.logo__text a{
+    color:  #00001a;
+}
 .user-name{
     margin-top: 0.5rem;
     height: 2rem;

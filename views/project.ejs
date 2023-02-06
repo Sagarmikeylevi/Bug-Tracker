@@ -17,7 +17,7 @@
     <div class="search-issues">
         <div class="search-box">
             <i class="ri-search-line"></i>
-            <input type="text" id="issue-search-bar-input" placeholder="Search issues.." onkeyup = "search()">
+            <input type="text" id="issue-search-bar-input" placeholder="Search issues.." onkeyup="search()">
         </div>
         <div class="search-btn">
             <p>Search</p>
@@ -42,43 +42,57 @@
 
         <div class="new-rq-body" id="new-rq-body">
             <% for(let issue of NewIssues){%>
-                <!-- new body setup -->
-                <div class="new-rq-body-post">
-                    <div class="style-bar-new-rq"></div>
-                    <div class="new-rq-body-details">
-                        <div class="new-rq-body-details-head">
-                            <div class="new-rq-body-details-issue-type">
-                                <p><%= issue.issueType %></p>
+                <%if(Project.id==issue.project){%>
+                    <!-- new body setup -->
+                    <div class="new-rq-body-post">
+                        <div class="style-bar-new-rq"></div>
+                        <div class="new-rq-body-details">
+                            <div class="new-rq-body-details-head">
+                                <div class="new-rq-body-details-issue-type">
+                                    <p>
+                                        <%= issue.issueType %>
+                                    </p>
+                                </div>
+                                <div class="new-rq-body-details-issue-delete">
+                                    <a href="/details/delete-new/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a>
+                                </div>
                             </div>
-                            <div class="new-rq-body-details-issue-delete">
-                               <a href="/details/delete-new/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+                            <div class="new-rq-body-details-issue-name" id="new-rq-body-details-issue-name">
+                                <i class="ri-coupon-3-line"></i>
+                                <p>
+                                    <%= issue.title %>
+                                </p>
                             </div>
+                            <div class="new-rq-body-details-issue-description">
+                                <p>
+                                    <%= issue.description %>
+                                </p>
+                            </div>
+                            <div class="new-rq-body-details-issue-others">
+                                <div class="new-rq-body-details-issue-others-name">
+                                    <p>
+                                        <%= issue.author %>
+                                    </p>
+                                </div>
+                                <div class="new-rq-body-details-issue-others-urgency-<%= issue.priority %>">
+                                    <i class="fa-solid fa-angles-up"></i>
+                                    <p>
+                                        <%= issue.priority %>
+                                    </p>
+                                </div>
+                                <div class="move-to-inprocess">
+                                    <a href="/details/move-inprocess/<%= issue.id %> "><i
+                                            class="ri-arrow-right-circle-fill"></i></a>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="new-rq-body-details-issue-name" id="new-rq-body-details-issue-name">
-                            <i class="ri-coupon-3-line"></i>
-                            <p><%= issue.title %></p>
-                        </div>
-                        <div class="new-rq-body-details-issue-description">
-                            <p><%= issue.description %></p>
-                        </div>
-                        <div class="new-rq-body-details-issue-others">
-                            <div class="new-rq-body-details-issue-others-name">
-                                <p><%= issue.author %></p>
-                            </div>
-                            <div class="new-rq-body-details-issue-others-urgency-<%= issue.priority %>">
-                                <i class="fa-solid fa-angles-up"></i>
-                                <p><%= issue.priority %></p>
-                            </div>
-                            <div class="move-to-inprocess">
-                                <a href="/details/move-inprocess/<%= issue.id %> "><i class="ri-arrow-right-circle-fill"></i></a>
-                            </div>
-                        </div>
-                        
+
                     </div>
-                    
-                </div>
-                <!-- new body setup end -->
-            <%}%>
+                    <!-- new body setup end -->
+                    <%}%>
+
+                <%}%>
 
         </div>
     </div>
@@ -92,45 +106,60 @@
         </div>
 
         <div class="in-progress-body">
-            
+
             <% for(let issue of InProcessIssue){%>
                 <!-- new body setup -->
-                <div class="in-progress-body-post">
-                    <div class="style-bar-in-progress"></div>
-                    <div class="in-progress-body-details">
-                        <div class="in-progress-body-head">
-                            <div class="in-progress-body-details-issue-type">
-                                <p><%= issue.issueType %></p>
+                <%if(Project.id==issue.project){%>
+                    <div class="in-progress-body-post">
+                        <div class="style-bar-in-progress"></div>
+                        <div class="in-progress-body-details">
+                            <div class="in-progress-body-head">
+                                <div class="in-progress-body-details-issue-type">
+                                    <p>
+                                        <%= issue.issueType %>
+                                    </p>
+                                </div>
+                                <div class="in-progress-body-details-issue-delete">
+                                    <a href="/details/delete-inprocess/<%= issue.id %>"><i
+                                            class="fa-solid fa-xmark"></i></a>
+                                </div>
                             </div>
-                            <div class="in-progress-body-details-issue-delete">
-                               <a href="/details/delete-inprocess/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+                            <div class="in-progress-body-details-issue-name">
+                                <i class="ri-coupon-3-line"></i>
+                                <p>
+                                    <%= issue.title %>
+                                </p>
                             </div>
-                        </div>
-                        <div class="in-progress-body-details-issue-name">
-                            <i class="ri-coupon-3-line"></i>
-                            <p><%= issue.title %></p>
-                        </div>
-                        <div class="in-progress-body-details-issue-description">
-                            <p><%= issue.description %></p>
-                        </div>
-    
-                        <div class="in-progress-body-details-issue-others">
-                            <div class="in-progress-body-details-issue-others-name">
-                                <p><%= issue.author %></p>
+                            <div class="in-progress-body-details-issue-description">
+                                <p>
+                                    <%= issue.description %>
+                                </p>
                             </div>
-                            <div class="in-progress-body-details-issue-others-urgency-<%= issue.priority %>">
-                                <i class="fa-solid fa-angles-up"></i>
-                                <p><%= issue.priority %></p>
-                            </div>
-                            <div class="move-to-complete">
-                                <a href="/details/move-complete/<%= issue.id %> "><i class="ri-arrow-right-circle-fill"></i></a>
+
+                            <div class="in-progress-body-details-issue-others">
+                                <div class="in-progress-body-details-issue-others-name">
+                                    <p>
+                                        <%= issue.author %>
+                                    </p>
+                                </div>
+                                <div class="in-progress-body-details-issue-others-urgency-<%= issue.priority %>">
+                                    <i class="fa-solid fa-angles-up"></i>
+                                    <p>
+                                        <%= issue.priority %>
+                                    </p>
+                                </div>
+                                <div class="move-to-complete">
+                                    <a href="/details/move-complete/<%= issue.id %> "><i
+                                            class="ri-arrow-right-circle-fill"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- new body setup end -->
-           <% } %>
-            
+                    <!-- new body setup end -->
+                    <% } %>
+                <%}%>
+
+
         </div>
     </div>
     <!-- in-progress end -->
@@ -143,39 +172,53 @@
         </div>
 
         <div class="complete-body">
-          <% for(let issue of Completed){%>  
-            <!-- new body setup -->
-            <div class="complete-body-post">
-                <div class="style-bar-complete"></div>
-                <div class="complete-body-details">
-                    <div class="complete-body-head">
-                        <div class="complete-body-details-issue-type">
-                            <p><%= issue.issueType %></p>
-                        </div>
-                        <div class="complete-body-details-issue-delete">
-                           <a href="/details/delete-completed/<%= issue.id %>"><i class="fa-solid fa-xmark"></i></a> 
+            <% for(let issue of Completed){%>
+                <%if(Project.id==issue.project){%>
+                    <!-- new body setup -->
+                    <div class="complete-body-post">
+                        <div class="style-bar-complete"></div>
+                        <div class="complete-body-details">
+                            <div class="complete-body-head">
+                                <div class="complete-body-details-issue-type">
+                                    <p>
+                                        <%= issue.issueType %>
+                                    </p>
+                                </div>
+                                <div class="complete-body-details-issue-delete">
+                                    <a href="/details/delete-completed/<%= issue.id %>"><i
+                                            class="fa-solid fa-xmark"></i></a>
+                                </div>
+                            </div>
+                            <div class="complete-body-details-issue-name">
+                                <i class="ri-coupon-3-line"></i>
+                                <p>
+                                    <%= issue.title %>
+                                </p>
+                            </div>
+                            <div class="complete-body-details-issue-description">
+                                <p>
+                                    <%= issue.description %>
+                                </p>
+                            </div>
+                            <div class="complete-body-details-issue-others">
+                                <div class="complete-body-details-issue-others-name">
+                                    <p>
+                                        <%= issue.author %>
+                                    </p>
+                                </div>
+                                <div class="complete-body-details-issue-others-urgency-<%= issue.priority %>">
+                                    <i class="fa-solid fa-angles-up"></i>
+                                    <p>
+                                        <%= issue.priority %>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="complete-body-details-issue-name">
-                        <i class="ri-coupon-3-line"></i>
-                        <p><%= issue.title %></p>
-                    </div>
-                    <div class="complete-body-details-issue-description">
-                        <p><%= issue.description %></p>
-                    </div>
-                    <div class="complete-body-details-issue-others">
-                        <div class="complete-body-details-issue-others-name">
-                            <p><%= issue.author %></p>
-                        </div>
-                        <div class="complete-body-details-issue-others-urgency-<%= issue.priority %>">
-                            <i class="fa-solid fa-angles-up"></i>
-                            <p><%= issue.priority %></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- new body setup end -->
-          <% } %>  
+                    <!-- new body setup end -->
+                    <% } %>
+                <%}%>
+
         </div>
     </div>
     <!-- complete end -->

@@ -2,8 +2,8 @@
 let filter_button = document.querySelector('.filter-issues');
 let filter_form = document.querySelector('.create-filter-form');
 let issue_type = document.querySelector('.issue-type');
+let searchfilter = document.getElementsByClassName('create-filter-form-submit');
 filter_button.addEventListener('click' , ()=>{
-    console.log('click');
     filter_form.style.display = 'block';
     issue_type.style.opacity = '0.2';
 });
@@ -13,48 +13,59 @@ filter_formClose.addEventListener('click' , ()=>{
     filter_form.style.display = 'none';
     issue_type.style.opacity = '1';
 })
+
+
+
 /* make filter button open and close end */
 /* labels */
 /* bug */
 let bug_checkBox = document.querySelector('.create-filter-form-labels-types-bugs-check-box');
 let bug_check = document.querySelector('#bugs_check');
+
 let bug_isClick = false;
 
-bug_checkBox.addEventListener('click' , ()=>{
+bug_checkBox.addEventListener('click' , (e)=>{
+    e.preventDefault();
     if(bug_isClick == false){
         bug_checkBox.style.background = '#008000';
         bug_checkBox.style.border = 'none';
         bug_check.style.display = 'block';
         bug_isClick = true;
+        
     }
     else{
         bug_checkBox.style.background = 'transparent';
         bug_checkBox.style.border = '1.5px solid #00001a';
         bug_check.style.display = 'none';
         bug_isClick = false;
+        
+        
     }
 });
 /* bug end */
-/* UI DESIGN */
-let UI_checkBox = document.querySelector('.create-filter-form-labels-types-ui-design-check-box');
-let UI_check = document.querySelector('#ui_check');
-let UI_isClick = false;
+/* Invalid */
+let invalid_checkBox = document.querySelector('.create-filter-form-labels-types-ui-design-check-box');
+let invalid_check = document.querySelector('#ui_check');
+let invalid_isClick = false;
 
-UI_checkBox.addEventListener('click' , ()=>{
-    if(UI_isClick == false){
-        UI_checkBox.style.background = '#008000';
-        UI_checkBox.style.border = 'none';
-        UI_check.style.display = 'block';
-        UI_isClick = true;
+invalid_checkBox.addEventListener('click' , (e)=>{
+    e.preventDefault();
+    if(invalid_isClick == false){
+        invalid_checkBox.style.background = '#008000';
+        invalid_checkBox.style.border = 'none';
+        invalid_check.style.display = 'block';
+        invalid_isClick = true;
+        
     }
     else{
-        UI_checkBox.style.background = 'transparent';
-        UI_checkBox.style.border = '1.5px solid #00001a';
-        UI_check.style.display = 'none';
-        UI_isClick = false;
+        invalid_checkBox.style.background = 'transparent';
+        invalid_checkBox.style.border = '1.5px solid #00001a';
+        invalid_check.style.display = 'none';
+        invalid_isClick = false;
+        
     }
 });
-/* UI DESIGN end*/
+/* invalid end*/
 /* documentation */
 let doc_checkBox = document.querySelector('.create-filter-form-labels-types-documentation-check-box');
 let doc_check = document.querySelector('#doc_check');
@@ -117,36 +128,7 @@ duplicate_checkBox.addEventListener('click' , ()=>{
 });
 /* duplicate */
 /* labels end */
-/* Author */
-let none_checkBox = document.querySelector('.create-filter-form-author-none-check-box');
-let none_isClick = false;
-none_checkBox.addEventListener('click' , ()=>{
-    if(none_isClick == false){
-        none_checkBox.style.background = '#008000';
-        none_checkBox.style.border = 'none';
-        none_isClick = true;
-    }
-    else{
-        none_checkBox.style.background = 'transparent';
-        none_checkBox.style.border = ' 1.5px solid #00001a';
-        none_isClick = false;
-    }
-});
-let austin_checkBox = document.querySelector('.create-filter-form-author-Austin-Blake-check-box');
-let austin_isClick = false;
-austin_checkBox.addEventListener('click' , ()=>{
-    if(austin_isClick == false){
-        austin_checkBox.style.background = '#008000';
-        austin_checkBox.style.border = 'none';
-        austin_isClick = true;
-    }
-    else{
-        austin_checkBox.style.background = 'transparent';
-        austin_checkBox.style.border = ' 1.5px solid #00001a';
-        austin_isClick = false;
-    }
-});
-/* Author end */
+
 
 /* create issues */
 let createIssueBtn = document.getElementById('new-rq-add');
@@ -174,19 +156,20 @@ let NewissueTypeArray = document.getElementsByClassName('new-rq-body-details-iss
 
 for(let i = 0; i<NewissueTypeArray.length; i++){
     let issueName = NewissueTypeArray[i].getElementsByTagName('p');
-    if(issueName[0].innerHTML == "BUGS"){
+    console.log(issueName[0].innerHTML)
+    if(issueName[0].innerHTML.trim() === "BUGS"){
         NewissueTypeArray[i].classList.add('bugs');
     }
-    if(issueName[0].innerHTML == "INVALID"){
+    if(issueName[0].innerHTML.trim() == "INVALID"){
         NewissueTypeArray[i].classList.add('invalid');
     }
-    if(issueName[0].innerHTML == "DOCUMENTATION"){
+    if(issueName[0].innerHTML.trim() == "DOCUMENTATION"){
         NewissueTypeArray[i].classList.add('documentation');
     }
-    if(issueName[0].innerHTML == "ENHANCEMENT"){
+    if(issueName[0].innerHTML.trim() == "ENHANCEMENT"){
         NewissueTypeArray[i].classList.add('enhancement');
     }
-    if(issueName[0].innerHTML == "DUPLICATE"){
+    if(issueName[0].innerHTML.trim() == "DUPLICATE"){
         NewissueTypeArray[i].classList.add('duplicate');
     }
 }
@@ -200,19 +183,19 @@ let IPissueTypeArray = document.getElementsByClassName('in-progress-body-details
 
 for(let i = 0; i<IPissueTypeArray.length; i++){
     let issueName = IPissueTypeArray[i].getElementsByTagName('p');
-    if(issueName[0].innerHTML == "BUGS"){
+    if(issueName[0].innerHTML.trim() == "BUGS"){
         IPissueTypeArray[i].classList.add('bugs');
     }
-    if(issueName[0].innerHTML == "INVALID"){
+    if(issueName[0].innerHTML.trim() == "INVALID"){
         IPissueTypeArray[i].classList.add('invalid');
     }
-    if(issueName[0].innerHTML == "DOCUMENTATION"){
+    if(issueName[0].innerHTML.trim() == "DOCUMENTATION"){
         IPissueTypeArray[i].classList.add('documentation');
     }
-    if(issueName[0].innerHTML == "ENHANCEMENT"){
+    if(issueName[0].innerHTML.trim() == "ENHANCEMENT"){
         IPissueTypeArray[i].classList.add('enhancement');
     }
-    if(issueName[0].innerHTML == "DUPLICATE"){
+    if(issueName[0].innerHTML.trim() == "DUPLICATE"){
         IPissueTypeArray[i].classList.add('duplicate');
     }
 
@@ -227,19 +210,19 @@ let CompletedissueTypeArray = document.getElementsByClassName('complete-body-det
 
 for(let i = 0; i<CompletedissueTypeArray.length; i++){
     let issueName = CompletedissueTypeArray[i].getElementsByTagName('p');
-    if(issueName[0].innerHTML == "BUGS"){
+    if(issueName[0].innerHTML.trim() == "BUGS"){
         CompletedissueTypeArray[i].classList.add('bugs');
     }
-    if(issueName[0].innerHTML == "INVALID"){
+    if(issueName[0].innerHTML.trim() == "INVALID"){
         CompletedissueTypeArray[i].classList.add('invalid');
     }
-    if(issueName[0].innerHTML == "DOCUMENTATION"){
+    if(issueName[0].innerHTML.trim() == "DOCUMENTATION"){
         CompletedissueTypeArray[i].classList.add('documentation');
     }
-    if(issueName[0].innerHTML == "ENHANCEMENT"){
+    if(issueName[0].innerHTML.trim() == "ENHANCEMENT"){
         CompletedissueTypeArray[i].classList.add('enhancement');
     }
-    if(issueName[0].innerHTML == "DUPLICATE"){
+    if(issueName[0].innerHTML.trim() == "DUPLICATE"){
         CompletedissueTypeArray[i].classList.add('duplicate');
     }
 
@@ -302,6 +285,225 @@ const search = ()=>{
     }
 }
 /* search issues end */
+
+/* filter */
+
+
+
+searchfilter[0].addEventListener('click' , ()=>{
+    
+    let issueTypes = {
+        BUGS: false,
+        INVALID: false,
+        DOCUMENTATION: false,
+        ENHANCEMENT: false,
+        DUPLICATE: false
+    };
+    
+    if(bug_isClick){
+        issueTypes.BUGS = true;
+    }else{
+        issueTypes.BUGS = false;
+    }
+    
+    if(invalid_isClick){
+        issueTypes.INVALID = true;
+    }else{
+        issueTypes.INVALID = false;
+    }
+    
+    if(doc_isClick ){
+        issueTypes.DOCUMENTATION = true;
+    }else{
+        issueTypes.DOCUMENTATION = false;
+    }
+    
+    if(enhancement_isClick){
+        issueTypes.ENHANCEMENT = true;
+    }else{
+        issueTypes.ENHANCEMENT = false;
+    }
+    
+    if(duplicate_isClick){
+        issueTypes.DUPLICATE = true;
+    }else{
+        issueTypes.DUPLICATE = false;
+    }
+    const newIssue1 = document.querySelectorAll('.new-rq-body-post');
+    const IPissue1 = document.querySelectorAll('.in-progress-body-post');
+    const completeIssue1 = document.querySelectorAll('.complete-body-post');
+    for (let key in issueTypes){
+            
+            for(let i = 0; i<newIssue1.length; i++){
+                let filter = document.getElementsByClassName('new-rq-body-details-issue-type');
+                let textValue = filter[i].getElementsByTagName('p')[0];
+                if((issueTypes.BUGS == false) && (issueTypes.DOCUMENTATION == false) && (issueTypes.DUPLICATE == false) && (issueTypes.ENHANCEMENT == false) && (issueTypes.INVALID == false)){
+                    newIssue1[i].style.display = "";
+                }else{
+                    if(issueTypes.BUGS == false){
+                        if(textValue.innerHTML.trim() == "BUGS"){
+                            newIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "BUGS"){
+                            newIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.DOCUMENTATION == false){
+                        if(textValue.innerHTML.trim() == "DOCUMENTATION"){
+                            newIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "DOCUMENTATION"){
+                            newIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.DUPLICATE == false){
+                        if(textValue.innerHTML.trim() == "DUPLICATE"){
+                            newIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "DUPLICATE"){
+                            newIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.ENHANCEMENT == false){
+                        if(textValue.innerHTML.trim() == "ENHANCEMENT"){
+                            newIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "ENHANCEMENT"){
+                            newIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.INVALID == false){
+                        if(textValue.innerHTML.trim() == "INVALID"){
+                            newIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "INVALID"){
+                            newIssue1[i].style.display = "";
+                        }
+                    }
+                }
+                
+            }
+            for(let i = 0; i<IPissue1.length; i++){
+                let filter = document.getElementsByClassName('in-progress-body-details-issue-type');
+                let textValue = filter[i].getElementsByTagName('p')[0];
+                if((issueTypes.BUGS == false) && (issueTypes.DOCUMENTATION == false) && (issueTypes.DUPLICATE == false) && (issueTypes.ENHANCEMENT == false) && (issueTypes.INVALID == false)){
+                    IPissue1[i].style.display = "";
+                }else{
+                    if(issueTypes.BUGS == false){
+                        if(textValue.innerHTML.trim() == "BUGS"){
+                            IPissue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "BUGS"){
+                            IPissue1[i].style.display = "";
+                        } 
+                    }
+                    if(issueTypes.DOCUMENTATION == false){
+                        if(textValue.innerHTML.trim() == "DOCUMENTATION"){
+                            IPissue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "DOCUMENTATION"){
+                            IPissue1[i].style.display = "";
+                        } 
+                    }
+                    if(issueTypes.DUPLICATE == false){
+                        if(textValue.innerHTML.trim() == "DUPLICATE"){
+                            IPissue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "DUPLICATE"){
+                            IPissue1[i].style.display = "";
+                        } 
+                    }
+                    if(issueTypes.ENHANCEMENT == false){
+                        if(textValue.innerHTML.trim() == "ENHANCEMENT"){
+                            IPissue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "ENHANCEMENT"){
+                            IPissue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.INVALID == false){
+                        if(textValue.innerHTML.trim() == "INVALID"){
+                            IPissue1[i].style.display = "";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "INVALID"){
+                            IPissue1[i].style.display = "";
+                        } 
+                    }
+                }
+                
+            }
+
+            for(let i = 0; i<completeIssue1.length; i++){
+                let filter = document.getElementsByClassName('complete-body-details-issue-type');
+                let textValue = filter[i].getElementsByTagName('p')[0];
+                if((issueTypes.BUGS == false) && (issueTypes.DOCUMENTATION == false) && (issueTypes.DUPLICATE == false) && (issueTypes.ENHANCEMENT == false) && (issueTypes.INVALID == false)){
+                    completeIssue1[i].style.display = "";
+                }else{
+                    if(issueTypes.BUGS == false){
+                        if(textValue.innerHTML.trim() == "BUGS"){
+                            completeIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "BUGS"){
+                            completeIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.DOCUMENTATION == false){
+                        if(textValue.innerHTML.trim() == "DOCUMENTATION"){
+                            completeIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "DOCUMENTATION"){
+                            completeIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.DUPLICATE == false){
+                        if(textValue.innerHTML.trim() == "DUPLICATE"){
+                            completeIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "DUPLICATE"){
+                            completeIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.ENHANCEMENT == false){
+                        if(textValue.innerHTML.trim() == "ENHANCEMENT"){
+                            completeIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "ENHANCEMENT"){
+                            completeIssue1[i].style.display = "";
+                        }
+                    }
+                    if(issueTypes.INVALID == false){
+                        if(textValue.innerHTML.trim() == "INVALID"){
+                            completeIssue1[i].style.display = "none";
+                        }
+                    }else{
+                        if(textValue.innerHTML.trim() == "INVALID"){
+                            completeIssue1[i].style.display = "";
+                        }
+                    }
+                }
+                
+            }
+            
+    }
+    filter_form.style.display = 'none';
+    issue_type.style.opacity = '1';
+    
+});
+/* filter end */
 
 
 

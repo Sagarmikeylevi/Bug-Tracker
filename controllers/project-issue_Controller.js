@@ -13,7 +13,6 @@ module.exports.projectIssues = function (req, res) {
                 if (err) { console.log(`Error2: ${err}`); return; }
                 CompletedIssue.find({}, function (err, completed) {
                     if (err) { console.log(`Error2: ${err}`); return; }
-
                     return res.render('project', {
                         title: "PROJECT-ISSUE | BUG TRACKER",
                         Project: project,
@@ -33,10 +32,22 @@ module.exports.projectIssues = function (req, res) {
 }
 
 module.exports.createIssue = function (req, res) {
-    NewIssue.create(req.body, function (err) {
-        if (err) { console.log(`Error: ${err}`); return; }
-        return res.redirect('back');
-    });
+    Project.findById(req.params.id , function(err , project){
+        const issue = new NewIssue({
+            issueType: req.body.issueType,
+            title: req.body.title,
+            author: req.body.author,
+            description: req.body.description,
+            priority: req.body.priority,
+            project: project.id
+        });
+        NewIssue.create(issue, function (err) {
+            if (err) { console.log(`Error: ${err}`); return; }
+            return res.redirect('back');
+        });
+    })
+    
+   
 }
 
 module.exports.deleteIssue = function (req, res) {
@@ -56,7 +67,7 @@ module.exports.MoveToInProcess = function (req, res) {
             author: issue.author,
             description: issue.description,
             priority: issue.priority,
-            user: issue.user
+            project: issue.project
         });
 
         InProcessIssue.create(inProcess, function (err) {
@@ -87,7 +98,7 @@ module.exports.MoveToCompleted = function (req, res) {
             author: issue.author,
             description: issue.description,
             priority: issue.priority,
-            user: issue.user
+            project: issue.project
         });
 
         CompletedIssue.create(completed, function (err) {

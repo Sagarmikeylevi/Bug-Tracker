@@ -313,10 +313,6 @@
     display: block;
 }
 
-/* .new-rq-body-details .new-rq-body-details-issue-type{
-    
-} */
-
 .bugs{
     margin-top: 0.5rem;
     height: 1.5rem;
@@ -608,6 +604,7 @@
     display: flex;
     transition: all ease-in-out 0.5s;
     flex-direction: row;
+    cursor: pointer;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -849,7 +846,7 @@
 .complete-body:hover::-webkit-scrollbar-thumb{
     background: gray;
 }
-.issue-type .complete .complete-body .complete-body-post{
+.complete-body-post{
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     height: 10rem;
@@ -859,6 +856,7 @@
     display: flex;
     transition: all ease-in-out 0.5s;
     flex-direction: row;
+    cursor: pointer;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -932,6 +930,7 @@
 }
 
 .complete-body-details .complete-body-details-issue-others{
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     height: 2rem;
@@ -1078,7 +1077,7 @@
 
 /* create-filter-form */
 .create-filter-form{
-    height: 25rem;
+    height: 18.5rem;
     width: 18rem;
     position: absolute;
     left: 70%;
@@ -1335,81 +1334,10 @@
 }
 /* duplicate end */
 
-/* create-filter-form-author */
-.create-filter-form-author{
-    margin-top: 0.5rem;
-    height: 5rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-.create-filter-form-author-head{
-    margin-left: 1rem;
-    font-size: medium;
-    height: 2rem;
-    width: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #003300;
-    color: #ffff;
-    font-weight: bold;
-    border-radius: 5px;
-}
-.create-filter-form-author-none{
-    margin-top: 0.2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 1.8rem;
-    margin-left: 1rem;
-    width: 100%;
-}
-.create-filter-form-author-none .create-filter-form-author-none-check-box{
-    margin-right: 0.2rem;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50%;
-    /* background: #008000; */
-    cursor: pointer;
-    border:  1.5px solid #00001a;
-}
-.create-filter-form-author-none .create-filter-form-author-none-name{
-    font-size: medium;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: #00001a;
-}
-
-.create-filter-form-author-Austin-Blake{
-    margin-top: 0.2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 1.8rem;
-    margin-left: 1rem;
-    width: 100%;
-}
-.create-filter-form-author-Austin-Blake .create-filter-form-author-Austin-Blake-check-box{
-    margin-right: 0.2rem;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50%;
-    /* background: #008000; */
-    cursor: pointer;
-    border:  1.5px solid #00001a;
-}
-.create-filter-form-author-Austin-Blake .create-filter-form-author-Austin-Blake-name{
-    font-size: medium;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: #00001a;
-}
-/* create-filter-form-author end */
 
 /* create-filter-form-submit */
 .create-filter-form-submit{
-    margin-top: 1.12rem;
+    margin-top: 0.5rem;
     height: 2rem;
     width: 100%;
     display: flex;
