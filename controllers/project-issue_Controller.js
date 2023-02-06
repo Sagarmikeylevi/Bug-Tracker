@@ -41,6 +41,11 @@ module.exports.createIssue = function (req, res) {
             priority: req.body.priority,
             project: project.id
         });
+        Project.findById(issue.project , function(err , project){
+            if (err) { console.log(`Error: ${err}`); return; }
+                project.newIssues.push(issue);
+                project.save();
+        });
         NewIssue.create(issue, function (err) {
             if (err) { console.log(`Error: ${err}`); return; }
             return res.redirect('back');
@@ -51,7 +56,10 @@ module.exports.createIssue = function (req, res) {
 }
 
 module.exports.deleteIssue = function (req, res) {
-    NewIssue.findByIdAndDelete(req.params.id, function (err) {
+    NewIssue.findByIdAndDelete(req.params.id, function (err , issue) {
+        Project.findByIdAndUpdate(issue.project , {$pull: {newIssues: issue.id }} , function(err){
+            if (err) { console.log(`Error: ${err}`); return; }
+        });
         if (err) { console.log(`Error: ${err}`); return; }
         return res.redirect('back');
     })
@@ -69,7 +77,14 @@ module.exports.MoveToInProcess = function (req, res) {
             priority: issue.priority,
             project: issue.project
         });
-
+        Project.findById(inProcess.project , function(err , project){
+            if (err) { console.log(`Error: ${err}`); return; }
+                Project.findByIdAndUpdate(project , {$pull: {newIssues: issue.id }} , function(err){
+                    if (err) { console.log(`Error: ${err}`); return; }
+                });
+                project.ipIssues.push(inProcess);
+                project.save();
+        });
         InProcessIssue.create(inProcess, function (err) {
             if (err) { console.log(`Error: ${err}`); return; }
             NewIssue.findByIdAndDelete(req.params.id, function (err) {
@@ -83,7 +98,10 @@ module.exports.MoveToInProcess = function (req, res) {
 }
 
 module.exports.IPIsuueDelete = function (req, res) {
-    InProcessIssue.findByIdAndDelete(req.params.id, function (err) {
+    InProcessIssue.findByIdAndDelete(req.params.id, function (err , issue) {
+        Project.findByIdAndUpdate(issue.project , {$pull: {ipIssues: issue.id }} , function(err){
+            if (err) { console.log(`Error: ${err}`); return; }
+        });
         if (err) { console.log(`Error: ${err}`); return; }
         return res.redirect('back');
     })
@@ -100,7 +118,14 @@ module.exports.MoveToCompleted = function (req, res) {
             priority: issue.priority,
             project: issue.project
         });
-
+        Project.findById(completed.project , function(err , project){
+            if (err) { console.log(`Error: ${err}`); return; }
+            Project.findByIdAndUpdate(project , {$pull: {ipIssues: issue.id }} , function(err){
+                if (err) { console.log(`Error: ${err}`); return; }
+               });
+                project.completeIssues.push(completed);
+                project.save();
+        });
         CompletedIssue.create(completed, function (err) {
             if (err) { console.log(`Error: ${err}`); return; }
             InProcessIssue.findByIdAndDelete(req.params.id, function (err) {
@@ -112,7 +137,10 @@ module.exports.MoveToCompleted = function (req, res) {
 }
 
 module.exports.completedDelete = function(req , res){
-    CompletedIssue.findByIdAndDelete(req.params.id, function (err) {
+    CompletedIssue.findByIdAndDelete(req.params.id, function (err , issue) {
+        Project.findByIdAndUpdate(issue.project , {$pull: {completeIssues: issue.id }} , function(err){
+            if (err) { console.log(`Error: ${err}`); return; }
+        });
         if (err) { console.log(`Error: ${err}`); return; }
         return res.redirect('back');
     })

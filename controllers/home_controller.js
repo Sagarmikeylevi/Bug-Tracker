@@ -1,4 +1,7 @@
 const { serializeUser } = require("passport");
+const CompletedIssue = require("../models/CompletedIssue");
+const InProcessIssue = require("../models/InProcessIssue");
+const NewIssue = require("../models/NewIssue");
 const Project = require("../models/Project");
 module.exports.home = function(req , res){
     if(!req.isAuthenticated()){
@@ -12,6 +15,8 @@ module.exports.home = function(req , res){
          });
     });
 }
+
+
 
 module.exports.createProject = function(req , res){
     const newProject = new Project({
@@ -30,8 +35,18 @@ module.exports.createProject = function(req , res){
 }
 
 module.exports.deleteProject = function(req , res){
-    Project.findByIdAndDelete(req.params.id , function(err){
+    Project.findById(req.params.id , function(err , project){
         if(err) {console.log(`Error: ${err}`); return;}
+        project.remove();
+        NewIssue.deleteMany({project: req.params.id} , function(err){
+            if(err) {console.log(`Error: ${err}`); return;}
+            InProcessIssue.deleteMany({project: req.params.id} , function(err){
+                if(err) {console.log(`Error: ${err}`); return;}
+                CompletedIssue.deleteMany({project: req.params.id} , function(err){
+                    if(err) {console.log(`Error: ${err}`); return;}
+                });
+            });
+        });
         return res.redirect('/home');
     });
 }

@@ -30,6 +30,24 @@ const projectSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
+    newIssues: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'NewIssue'
+        }
+    ],
+    ipIssues: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'InProcessIssue'
+        }
+    ],
+    completeIssues: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'CompletedIssue'
+        }
+    ],
 },{
     timestamps: true
 });
