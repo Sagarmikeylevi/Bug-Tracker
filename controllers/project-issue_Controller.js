@@ -3,36 +3,29 @@ const InProcessIssue = require("../models/InProcessIssue");
 const NewIssue = require("../models/NewIssue");
 const Project = require("../models/Project");
 
-module.exports.projectIssues = function (req, res) {
-    let id = req.params.id;
-    Project.findById(id, function (err, project) {
-        if (err) { console.log(`Error: ${err}`); return; }
-        NewIssue.find({}, function (err, newissue) {
-            if (err) { console.log(`Error: ${err}`); return; }
-            InProcessIssue.find({}, function (err, inprocess) {
-                if (err) { console.log(`Error2: ${err}`); return; }
-                CompletedIssue.find({}, function (err, completed) {
-                    if (err) { console.log(`Error2: ${err}`); return; }
-                    return res.render('project', {
-                        title: "PROJECT-ISSUE | BUG TRACKER",
-                        Project: project,
-                        NewIssues: newissue,
-                        InProcessIssue: inprocess,
-                        Completed: completed
-                    });
+module.exports.projectIssues = async (req, res) => {
+    try {
+        let project = await Project.findById(req.params.id);
+        let newIssue = await NewIssue.find({});
+        let ipIssues = await InProcessIssue.find({});
+        let completeIssues = await CompletedIssue.find({});
 
-                })
-
-            })
-
-        })
-
-    })
-
+        return res.render('project', {
+            title: "PROJECT-ISSUE | BUG TRACKER",
+            Project: project,
+            NewIssues: newIssue,
+            InProcessIssue: ipIssues,
+            Completed: completeIssues
+        });
+    } catch (err) {
+        console.log(`Error in project issue controller ${err}`);
+        return;
+    }
 }
 
-module.exports.createIssue = function (req, res) {
-    Project.findById(req.params.id , function(err , project){
+module.exports.createIssue = async (req, res) => {
+    try {
+        let project = await Project.findById(req.params.id);
         const issue = new NewIssue({
             issueType: req.body.issueType,
             title: req.body.title,
@@ -41,34 +34,32 @@ module.exports.createIssue = function (req, res) {
             priority: req.body.priority,
             project: project.id
         });
-        Project.findById(issue.project , function(err , project){
-            if (err) { console.log(`Error: ${err}`); return; }
-                project.newIssues.push(issue);
-                project.save();
-        });
-        NewIssue.create(issue, function (err) {
-            if (err) { console.log(`Error: ${err}`); return; }
-            return res.redirect('back');
-        });
-    })
-    
-   
-}
-
-module.exports.deleteIssue = function (req, res) {
-    NewIssue.findByIdAndDelete(req.params.id, function (err , issue) {
-        Project.findByIdAndUpdate(issue.project , {$pull: {newIssues: issue.id }} , function(err){
-            if (err) { console.log(`Error: ${err}`); return; }
-        });
-        if (err) { console.log(`Error: ${err}`); return; }
+        project.newIssues.push(issue);
+        project.save();
+        await NewIssue.create(issue);
         return res.redirect('back');
-    })
+
+    } catch (error) {
+        console.log(`Error in creating issues ${err}`);
+        return;
+    }
 }
 
+module.exports.deleteIssue = async (req, res) => {
+    try {
+        let issue = await NewIssue.findByIdAndDelete(req.params.id);
+        await Project.findByIdAndUpdate(issue.project, { $pull: { newIssues: issue.id } });
+        return res.redirect('back');
+    } catch (err) {
+        console.log(`Error in deleting issues ${err}`);
+        return;
+    }
 
-module.exports.MoveToInProcess = function (req, res) {
-    NewIssue.findById(req.params.id, function (err, issue) {
-        if (err) { console.log(`Error: ${err}`); return; }
+}
+
+module.exports.MoveToInProcess = async (req, res) => {
+    try {
+        let issue = await NewIssue.findById(req.params.id);
         const inProcess = new InProcessIssue({
             issueType: issue.issueType,
             title: issue.title,
@@ -77,39 +68,36 @@ module.exports.MoveToInProcess = function (req, res) {
             priority: issue.priority,
             project: issue.project
         });
-        Project.findById(inProcess.project , function(err , project){
-            if (err) { console.log(`Error: ${err}`); return; }
-                Project.findByIdAndUpdate(project , {$pull: {newIssues: issue.id }} , function(err){
-                    if (err) { console.log(`Error: ${err}`); return; }
-                });
-                project.ipIssues.push(inProcess);
-                project.save();
-        });
-        InProcessIssue.create(inProcess, function (err) {
-            if (err) { console.log(`Error: ${err}`); return; }
-            NewIssue.findByIdAndDelete(req.params.id, function (err) {
-                if (err) { console.log(`Error: ${err}`); return; }
-                return res.redirect('back');
-            })
-        });
-
-
-    })
-}
-
-module.exports.IPIsuueDelete = function (req, res) {
-    InProcessIssue.findByIdAndDelete(req.params.id, function (err , issue) {
-        Project.findByIdAndUpdate(issue.project , {$pull: {ipIssues: issue.id }} , function(err){
-            if (err) { console.log(`Error: ${err}`); return; }
-        });
-        if (err) { console.log(`Error: ${err}`); return; }
+        let project = await Project.findById(inProcess.project);
+        await Project.findByIdAndUpdate(project, { $pull: { newIssues: issue.id } });
+        project.ipIssues.push(inProcess);
+        project.save();
+        await InProcessIssue.create(inProcess);
+        await NewIssue.findByIdAndDelete(req.params.id);
         return res.redirect('back');
-    })
+
+    } catch (err) {
+        console.log(`Error in inprocess issues ${err}`);
+        return;
+    }
 }
 
-module.exports.MoveToCompleted = function (req, res) {
-    InProcessIssue.findById(req.params.id, function (err, issue) {
-        if (err) { console.log(`Error: ${err}`); return; }
+module.exports.IPIsuueDelete = async (req, res) => {
+
+    try {
+        let issue = await InProcessIssue.findByIdAndDelete(req.params.id);
+        await Project.findByIdAndUpdate(issue.project, { $pull: { ipIssues: issue.id } });
+        return res.redirect('back');
+
+    } catch (err) {
+        console.log(`Error in deleting inprocess issues ${err}`);
+        return;
+    }
+}
+
+module.exports.MoveToCompleted = async (req, res) => {
+    try {
+        let issue = await InProcessIssue.findById(req.params.id);
         const completed = new InProcessIssue({
             issueType: issue.issueType,
             title: issue.title,
@@ -118,30 +106,28 @@ module.exports.MoveToCompleted = function (req, res) {
             priority: issue.priority,
             project: issue.project
         });
-        Project.findById(completed.project , function(err , project){
-            if (err) { console.log(`Error: ${err}`); return; }
-            Project.findByIdAndUpdate(project , {$pull: {ipIssues: issue.id }} , function(err){
-                if (err) { console.log(`Error: ${err}`); return; }
-               });
-                project.completeIssues.push(completed);
-                project.save();
-        });
-        CompletedIssue.create(completed, function (err) {
-            if (err) { console.log(`Error: ${err}`); return; }
-            InProcessIssue.findByIdAndDelete(req.params.id, function (err) {
-                if (err) { console.log(`Error: ${err}`); return; }
-                return res.redirect('back');
-            });
-        });
-    });
+        let project = await Project.findById(completed.project);
+        await Project.findByIdAndUpdate(project, { $pull: { ipIssues: issue.id } });
+        project.completeIssues.push(completed);
+        project.save();
+        await CompletedIssue.create(completed);
+        await InProcessIssue.findByIdAndDelete(req.params.id);
+        return res.redirect('back');
+
+    } catch (err) {
+        console.log(`Error in completing issues ${err}`);
+        return;
+    }
+
 }
 
-module.exports.completedDelete = function(req , res){
-    CompletedIssue.findByIdAndDelete(req.params.id, function (err , issue) {
-        Project.findByIdAndUpdate(issue.project , {$pull: {completeIssues: issue.id }} , function(err){
-            if (err) { console.log(`Error: ${err}`); return; }
-        });
-        if (err) { console.log(`Error: ${err}`); return; }
+module.exports.completedDelete = async (req, res) => {
+    try {
+        let issue = await CompletedIssue.findByIdAndDelete(req.params.id);
+        await Project.findByIdAndUpdate(issue.project, { $pull: { completeIssues: issue.id } });
         return res.redirect('back');
-    })
+    } catch (err) {
+        console.log(`Error in deleting the completed issues ${err}`);
+        return;
+    }
 }

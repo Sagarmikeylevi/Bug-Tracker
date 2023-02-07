@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-module.exports.signUp = function(req , res){
+module.exports.signUp = (req , res) =>{
     if(req.isAuthenticated()){
         return res.redirect('/home');
     }
@@ -9,22 +9,24 @@ module.exports.signUp = function(req , res){
     });
 }
 
-module.exports.create = function(req , res){
-    if(req.body.password != req.body.confirm_password){
-        return res.redirect('back');
-    }
-
-    User.findOne({email: req.body.email} , function(err , user){
-        if(err) {console.log('error'); return;}
-
+module.exports.create = async (req , res) =>{
+    try {
+        if(req.body.password != req.body.confirm_password){
+            return res.redirect('back');
+        }
+    
+        let user = await User.findOne({email: req.body.email});
+    
         if(!user){
-            User.create(req.body , function(err , user){
-                if(err) {console.log('error'); return;}
-
-                return res.redirect('/sign-in');
-            });
+            let user = await User.create(req.body);
+            return res.redirect('/sign-in');
         }else{
             return res.redirect('back');
         }
-    });
+    } catch (err) {
+        console.log(`Error in signing in ${err}`);
+        return;
+    }
+    
+
 }

@@ -24,8 +24,7 @@ let bug_check = document.querySelector('#bugs_check');
 
 let bug_isClick = false;
 
-bug_checkBox.addEventListener('click' , (e)=>{
-    e.preventDefault();
+bug_checkBox.addEventListener('click' , ()=>{
     if(bug_isClick == false){
         bug_checkBox.style.background = '#008000';
         bug_checkBox.style.border = 'none';
@@ -48,8 +47,7 @@ let invalid_checkBox = document.querySelector('.create-filter-form-labels-types-
 let invalid_check = document.querySelector('#ui_check');
 let invalid_isClick = false;
 
-invalid_checkBox.addEventListener('click' , (e)=>{
-    e.preventDefault();
+invalid_checkBox.addEventListener('click' , ()=>{
     if(invalid_isClick == false){
         invalid_checkBox.style.background = '#008000';
         invalid_checkBox.style.border = 'none';
@@ -312,7 +310,7 @@ searchfilter[0].addEventListener('click' , ()=>{
         issueTypes.INVALID = false;
     }
     
-    if(doc_isClick ){
+    if(doc_isClick){
         issueTypes.DOCUMENTATION = true;
     }else{
         issueTypes.DOCUMENTATION = false;
@@ -432,7 +430,7 @@ searchfilter[0].addEventListener('click' , ()=>{
                     }
                     if(issueTypes.INVALID == false){
                         if(textValue.innerHTML.trim() == "INVALID"){
-                            IPissue1[i].style.display = "";
+                            IPissue1[i].style.display = "none";
                         }
                     }else{
                         if(textValue.innerHTML.trim() == "INVALID"){
