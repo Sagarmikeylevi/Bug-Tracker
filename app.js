@@ -10,6 +10,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 
 
 app.use(express.urlencoded());
@@ -46,6 +48,10 @@ app.use(expressLayouts);
 //set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('views' , './views');
+
+// flash
+app.use(flash());
+app.use(customMware.setFlash);
 
 // Import the routes file
 app.use('/' , require('./routes'));

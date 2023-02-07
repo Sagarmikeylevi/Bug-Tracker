@@ -10,5 +10,6 @@ module.exports.signIn = (req, res) => {
 }
 
 module.exports.createSession = async (req, res) => {
+    req.flash('success' , 'Logged in Successfully');
     return res.redirect('/home');
 }

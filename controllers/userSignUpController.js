@@ -21,6 +21,7 @@ module.exports.create = async (req , res) =>{
             let user = await User.create(req.body);
             return res.redirect('/sign-in');
         }else{
+            req.flash('error' , 'Already have an account');
             return res.redirect('back');
         }
     } catch (err) {
