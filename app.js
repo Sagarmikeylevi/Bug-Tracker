@@ -13,6 +13,8 @@ const passportLocal = require('./config/passport-local-strategy');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
+require('dotenv').config();
+
 
 app.use(express.urlencoded());
 
@@ -20,14 +22,14 @@ app.use(express.static('./assets'));
 
 app.use(session({
     name: 'BUG TRACKER',
-    secret: 'mySecret',
+    secret: process.env.API_KEY,
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/Bug_tracker_DB',
+        mongoUrl: process.env.DATABASE_URL,
         autoRemove:'disabled' 
       },function(err){
         console.log(err || 'connect-mongodb setup ok');
