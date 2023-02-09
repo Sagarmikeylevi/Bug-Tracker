@@ -1,8 +1,10 @@
+
 const mongoose = require('mongoose');
+require('dotenv').config();
 /* mongoose.set('strictQuery', false); is a method that is used to configure Mongoose to be less strict when querying MongoDB collections.*/
 mongoose.set('strictQuery', false);
 /* The "useNewUrlParser" option is used to configure the MongoDB driver to use the new url parser instead of the deprecated one. */
-mongoose.connect('mongodb://localhost/Bug_tracker_DB', { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
