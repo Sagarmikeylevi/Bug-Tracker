@@ -35,7 +35,7 @@
           <% if(locals.user.id == project.user){ %>
             <!-- delete and update part -->
           <div class="delete-update" id="delete-update">
-              <a href="home/delete/<%= project.id %>">
+              <a  href="home/delete/<%= project.id %>">
                 <div class="delete">
                   <p>Delete</p>
                 </div>
@@ -174,10 +174,11 @@
   <!-- show projects end -->
 </div>
 
-<div class="craete-project-form">
+<div class="craete-project-form" >
   <%- include('_createProject') -%>
 </div>
 
 
 <!-- Script -->
 <script src="/JS/home.js"></script>
+<script src="/JS/home_project.js"></script>

@@ -62,26 +62,20 @@ module.exports.deleteProject = async (req, res) => {
 }
 
 module.exports.updateProject = async (req, res) => {
-    if(req.user.id == req.params.id){
-        try {
-            await Project.findByIdAndUpdate({ _id: req.params.id }, {
-                $set: {
-                    title: req.body.title,
-                    titleColor: req.body.titleColor,
-                    author: req.body.author,
-                    description: req.body.description,
-                    projectTypes: req.body.projectTypes,
-                    priority: req.body.priority
-                }
-            });
-            return res.redirect('/home');
-        } catch (err) {
-            console.log(`Error in updating the project ${err}`);
-            return;
-        }
-    }else{
-        console.log('Unauthorized');
+    try {
+        await Project.findByIdAndUpdate({ _id: req.params.id }, {
+            $set: {
+                title: req.body.title,
+                titleColor: req.body.titleColor,
+                author: req.body.author,
+                description: req.body.description,
+                projectTypes: req.body.projectTypes,
+                priority: req.body.priority
+            }
+        });
+        return res.redirect('/home');
+    } catch (err) {
+        console.log(`Error in updating the project ${err}`);
+        return;
     }
-    
-    
 }
