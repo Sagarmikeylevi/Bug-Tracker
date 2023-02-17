@@ -6,9 +6,12 @@ const Project = require("../models/Project");
 module.exports.projectIssues = async (req, res) => {
     try {
         let project = await Project.findById(req.params.id);
-        let newIssue = await NewIssue.find({});
-        let ipIssues = await InProcessIssue.find({});
-        let completeIssues = await CompletedIssue.find({});
+        let newIssue = await NewIssue.find({})
+        .sort('-createdAt');
+        let ipIssues = await InProcessIssue.find({})
+        .sort('-createdAt');
+        let completeIssues = await CompletedIssue.find({})
+        .sort('-createdAt');
 
         return res.render('project', {
             title: "PROJECT-ISSUE | BUG TRACKER",

@@ -10,7 +10,8 @@ module.exports.home = async (req, res) => {
             return res.redirect('/sign-in');
         }
 
-        let project = await Project.find({});
+        let project = await Project.find({})
+        .sort('-createdAt');
         return res.render('home', {
             title: 'HOME | BUG TRACKER',
             projects: project
@@ -34,6 +35,7 @@ module.exports.createProject = async (req, res) => {
             priority: req.body.priority,
             user: req.user._id
         });
+        
         await Project.create(newProject);
         return res.redirect('/home');
 

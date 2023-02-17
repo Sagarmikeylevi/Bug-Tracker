@@ -4,10 +4,11 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // authentication using passport local
 passport.use(new LocalStrategy({
-         usernameField: 'email'
+         usernameField: 'email',
+         passReqToCallback: true
     },
 
-    function(email , password , done){
+    function(req,email , password , done){
         User.findOne({email: email} , function(err , user){
             if(err){
                 req.flash('error' , err);
