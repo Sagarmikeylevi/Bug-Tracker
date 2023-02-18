@@ -16,7 +16,7 @@
   "description": "This is a bug tracker website",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon start",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sagar Das",
