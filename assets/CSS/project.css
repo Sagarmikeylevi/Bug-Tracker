@@ -1080,8 +1080,8 @@
     height: 18.5rem;
     width: 18rem;
     position: absolute;
-    left: 70%;
     top: 21%;
+    left: 70%;
     border-radius: 5px;
     display: none;
     background: #e6ffe6;
@@ -1089,6 +1089,10 @@
     animation: animate-fitler-form 300ms ease-in-out forwards;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+
+
+
 @keyframes animate-fitler-form {
     50%{
         transform: scale3d(1.1 , 1.1 , 1.1);
@@ -1096,7 +1100,7 @@
     100%{
         transform: scale3d(1 , 1 , 1);
     }
-}
+} 
 .create-filter-form:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -1372,6 +1376,8 @@
     background:#fafffa;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+
 
 @keyframes animate-form {
     0%{
@@ -1693,4 +1699,39 @@
 }
 /* create-project-issue-form end */
 
+/* responsive */
+@media screen and (max-width: 800px){
+    .create-project-issue-form{
+        left: 28%;
+    }
+}
+@media screen and (max-width: 650px){
+    .create-project-issue-form{
+        left: 20%;
+    }
+}
+@media screen and (max-width: 600px){
+    .create-project-issue-form{
+        left: 15%;
+    }
+    
+}
+
+@media screen and (max-width: 500px){
+    .create-project-issue-form{
+        left: 8%;
+    }
+}
+
+
+@media screen and (max-width: 900px){
+    .create-filter-form{
+        left: 50%;
+    }
+}
+@media screen and (max-width: 700px){
+    .create-filter-form{
+        left: 20%;
+    }
+} 
 

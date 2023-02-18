@@ -1,38 +1,41 @@
-<div class="signUpPage">
-    <div class="signUpPageHead">
-        <div class="signUpPageHead-focus">
-            <p>Create an account</p>
-        </div>
-        <div class="signUpPageHead-blur">
-            <p>Let's get started with your 30 day free trial</p>
-        </div>
-    </div>
-
-    <div class="signUp-details">
-        <form action="/sign-up/create" method="POST">
-            <div class="signUp-name">
-                <input type="text" name="name" placeholder="Name">
+<div class="signUpWrapper">
+    <div class="signUpPage">
+        <div class="signUpPageHead">
+            <div class="signUpPageHead-focus">
+                <p>Create an account</p>
             </div>
-            <div class="signUp-email">
-                <input type="email" name="email" placeholder="Email">
+            <div class="signUpPageHead-blur">
+                <p>Let's get started with your 30 day free trial</p>
             </div>
+        </div>
     
-            <div class="signUp-password">
-                <input type="password" name="password" placeholder="Password">
-            </div>
-            
-            <div class="signUp-re-password">
-                <input type="password" name="confirm_password" placeholder="Confirm password">
-            </div>
-
-            <div class="signUp-submitBtn">
-                <button type="submit">Create account</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="signIn-route">
-        <p>Already have an account?</p>
-        <a href="/sign-in">Log in</a>
+        <div class="signUp-details">
+            <form action="/sign-up/create" method="POST">
+                <div class="signUp-name">
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="signUp-email">
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+        
+                <div class="signUp-password">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                
+                <div class="signUp-re-password">
+                    <input type="password" name="confirm_password" placeholder="Confirm password">
+                </div>
+    
+                <div class="signUp-submitBtn">
+                    <button type="submit">Create account</button>
+                </div>
+            </form>
+        </div>
+    
+        <div class="signIn-route">
+            <p>Already have an account?</p>
+            <a href="/sign-in">Log in</a>
+        </div>
     </div>
 </div>
+

@@ -433,6 +433,8 @@ main{
 
 
 /* craete-project-form */
+
+
 .craete-project-form{
     height: 30rem;
     width: 25rem;
@@ -463,37 +465,6 @@ main{
         transform: translateX(0px);
     }
 }
-/* .craete-project-form::after{
-    content: ' ';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0%;
-    height: 0%;
-    background: transparent;
-    transition: all ease 0.5s;
-    border-right: 3px solid transparent;
-    border-bottom: 3px solid transparent;
-}
-
-.craete-project-form::before{
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 0%;
-    transition: all ease 0.5s;
-    border-left: 3px solid transparent;
-    border-top: 3px solid transparent;
-}
-
-.craete-project-form:hover::after ,
-.craete-project-form:hover::before{
-    border-color: #3d0066;
-    width: 99%;
-    height: 99%;
-} */
 
 .craete-project-form:hover{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -950,6 +921,8 @@ main{
     }
 }
 
+
+
 .update-project-form:hover{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
@@ -1302,3 +1275,30 @@ main{
 }
 /* submit button end */
 /* update-project-form end */
+
+/* respnsive */
+@media screen and (max-width: 800px){
+    .craete-project-form{
+        left: 28%;
+    }
+    .update-project-form{
+        left: 28%;
+    }
+}
+@media screen and (max-width: 650px){
+    .craete-project-form{
+        left: 20%;
+    }
+    .update-project-form{
+        left: 20%;
+    }
+}
+@media screen and (max-width: 600px){
+    .craete-project-form{
+        left: 15%;;
+    }
+    .update-project-form{
+        left: 15%;
+    }
+    
+}
