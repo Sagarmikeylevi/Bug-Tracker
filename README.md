@@ -26,5 +26,16 @@ Bug Tracker is built using the following technologies:
 
 ![Screenshot (142)](https://user-images.githubusercontent.com/114811573/219876348-0f25cd64-f0d0-48d8-a47d-ba15f8929547.png)
 
+## Installation
+To run the Bug Tracker project on your local machine, follow these steps:
+- Clone the project repository to your local machine using a Git client or by downloading the project files.
+- In the project root directory, run the following command to install the project dependencies: npm install
+- This will install all the required packages and dependencies listed in the package.json file.
+- After the installation is complete, start the application by running the following command in the project root directory: npm start
+- This will start the server and the application will be accessible at http://localhost:3000.
+
+## Deployement
+Project already deployed on Render. Visit: https://bug-tracker1.onrender.com/
+
 
 
