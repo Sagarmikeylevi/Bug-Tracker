@@ -22,6 +22,7 @@ Bug Tracker is built using the following technologies:
 - JavaScript
 - MongoDB
 
-![1676736384241](https://user-images.githubusercontent.com/114811573/219876050-293e351d-883e-487b-8ab5-b748486577da.jpg) ![Screenshot (141)](https://user-images.githubusercontent.com/114811573/219876299-82d1aed3-8bd3-497e-820f-2e5d295290d0.png)
+![1676736384241](https://user-images.githubusercontent.com/114811573/219876050-293e351d-883e-487b-8ab5-b748486577da.jpg) ![Screenshot (141)](https://user-images.githubusercontent.com/114811573/219876299-82d1aed3-8bd3-497e-820f-2e5d295290d0.png) ![Screenshot (142)](https://user-images.githubusercontent.com/114811573/219876348-0f25cd64-f0d0-48d8-a47d-ba15f8929547.png)
+
 
 
