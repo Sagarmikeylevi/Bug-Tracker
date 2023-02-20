@@ -37,5 +37,8 @@ To run the Bug Tracker project on your local machine, follow these steps:
 ## Deployement
 Project already deployed on Render. Visit: https://bug-tracker1.onrender.com/
 
+## Video Link 
+Visit: https://www.youtube.com/watch?v=HUu8b_RJESY
+
 
 
